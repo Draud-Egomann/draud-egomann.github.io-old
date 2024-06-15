@@ -4,7 +4,7 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "blazortemplateproject": "StartDebugging",
+        "github_io_page": "StartDebugging",
         "db": "StartWithoutDebugging",
         "phpmyadmin": "StartWithoutDebugging"
       }
@@ -13,7 +13,7 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "blazortemplateproject": "DoNotStart",
+        "github_io_page": "DoNotStart",
         "db": "StartWithoutDebugging",
         "phpmyadmin": "StartWithoutDebugging"
       }

@@ -1,22 +1,22 @@
 version: '3.4'
 
 services:
-  blazortemplateproject:
-    image: ${DOCKER_REGISTRY-}blazortemplateproject
+  github_io_page:
+    image: ${DOCKER_REGISTRY-}github_io_page
     build:
       context: .
-      dockerfile: BlazorTemplateProject/Dockerfile
-    container_name: blazor_template_app
+      dockerfile: github_io_page/Dockerfile
+    container_name: github_io_page_app
 
   db:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: blazortemplate
+      MYSQL_DATABASE: github_io_page
       MYSQL_USER: blazortemplate
       MYSQL_PASSWORD: blazortemplate123
     volumes:
-      - blazortemplate-data:/var/lib/mysql
+      - github_io_page-data:/var/lib/mysql
     ports:
       - "3306:3306"
     container_name: blazor_mysql_db
@@ -36,4 +36,4 @@ services:
       - db
 
 volumes:
-  blazortemplate-data:
+  github_io_page-data:

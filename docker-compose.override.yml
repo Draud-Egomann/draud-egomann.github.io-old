@@ -1,12 +1,12 @@
 version: '3.4'
 
 services:
-  blazortemplateproject:
+  github_io_page:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__DefaultConnection=server=db;port=3306;database=blazortemplate;user=blazortemplate;password=blazortemplate123; 
+      - ConnectionStrings__DefaultConnection=server=db;port=3306;database=github_io_page;user=blazortemplate;password=blazortemplate123; 
     ports:
       - "8080"
       - "8081"
