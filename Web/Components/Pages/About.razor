@@ -34,8 +34,26 @@
   </div>
 </div>
 
+<div class="relative card-container w-full h-96 whitespace-nowrap overflow-hidden bg-black">
+
+  <div v-for="(card, index) in cards" :key="index" class="inline-block w-full h-96 bg-tertiary-500 card"
+    :style="{ transform: `translateX(${card.translateX}px)` }">
+    <img class="w-full h-full object-cover" src="https://placehold.co/368x256" alt="Card" />
+  </div>
+
+  <div class="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-white to-transparent"></div>
+  <div class="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-white to-transparent"></div>
+</div>
+
+<style>
+.card {
+    transition: transform 0.1s linear;
+}
+</style>
+
 @code {
   private string[] positions = ["lg:-top-[22rem] lg:right-[13rem]", "lg:-top-[9rem] lg:right-[4rem]", "lg:top-[3rem] lg:right-[16rem]"];
+  private string[] cards = ["0", "0", "0", "0", "0"];
 
   protected override void OnInitialized() {
     base.OnInitialized();
