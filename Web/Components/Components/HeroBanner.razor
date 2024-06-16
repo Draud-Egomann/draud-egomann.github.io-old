@@ -1,4 +1,4 @@
-﻿<div class="w-full relative h-[95vh] bg-heroBanner @(Class + Height)">
+﻿<div class="w-full relative h-[@(Height)] bg-heroBanner @(Class)">
   <div class="h-full flex flex-col justify-center items-center md:items-baseline gap-8 container">
     <div class="flex flex-col gap-4 mx-2 py-4">
       <Heading Size="HeadingSize.Is1" Class="text-4xl lg:text-5xl my-2">
@@ -61,7 +61,7 @@
   [Parameter]
   public EventCallback OnClick { get; set; } = EventCallback.Empty;
 
-  private string Height => IsBigView ? " 95vh " : " 40vh ";
+  private string Height => IsBigView ? "95vh" : "40vh";
 
   protected override void OnInitialized() {
     base.OnInitialized();
