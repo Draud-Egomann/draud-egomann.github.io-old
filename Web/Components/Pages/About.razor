@@ -1,12 +1,15 @@
 ﻿@page "/about"
 @using Web.Components.Components;
+@using Web.Helper
+@using Web.Models
+@implements IDisposable;
 
 <PageTitle>Justin Urbanek - Über mich</PageTitle>
 
 <HeroBanner Title="Lorem Ipsum dolor"
-  SubTitle="sit amet consectetur adipisici elit..."
-  HasButton="false"
-  IsBigView="false" />
+            SubTitle="sit amet consectetur adipisici elit..."
+            HasButton="false"
+            IsBigView="false" />
 
 @* ContentGrid2 *@
 <div class="w-full relative own-bg-primary">
@@ -26,36 +29,65 @@
       </Paragraph>
     </div>
 
-    <div class="w-full lg:w-2/3 relative">
-      @foreach (var position in positions) {
-        <img src="https://placehold.co/368x256" alt="" class="static lg:absolute shadow-gray-800 shadow-md @(position)" />
+    <div class="hidden lg:block w-full lg:w-2/3 relative">
+      @foreach (var image in Images) {
+        <img src=@image.ImageUrl alt=@image.AltText class="static lg:absolute shadow-gray-800 shadow-md @(image.Position)" />
       }
+    </div>
+
+    <div class="block lg:hidden w-full h-96 relative own-bg-primary whitespace-nowrap overflow-hidden">
+      @foreach (var image in Images) {
+        <div class="inline-block w-full h-96 image" style="transform: translateX(@(image.TranslateX)px);">
+          <img class="w-full h-full object-cover" src=@image.ImageUrl alt=@image.AltText />
+        </div>
+      }
+
+      <div class="w-20 h-full absolute top-0 left-0 bg-gradient-to-r from-[#1D2328] to-transparent"></div>
+      <div class="w-20 h-full absolute top-0 right-0 bg-gradient-to-l from-[#1D2328] to-transparent"></div>
     </div>
   </div>
 </div>
 
-<div class="relative card-container w-full h-96 whitespace-nowrap overflow-hidden bg-black">
-
-  <div v-for="(card, index) in cards" :key="index" class="inline-block w-full h-96 bg-tertiary-500 card"
-    :style="{ transform: `translateX(${card.translateX}px)` }">
-    <img class="w-full h-full object-cover" src="https://placehold.co/368x256" alt="Card" />
-  </div>
-
-  <div class="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-white to-transparent"></div>
-  <div class="absolute top-0 right-0 w-20 h-full bg-gradient-to-l from-white to-transparent"></div>
-</div>
-
 <style>
-.card {
-    transition: transform 0.1s linear;
-}
+  .image {
+    transition: transform 0.4s linear;
+  }
 </style>
 
 @code {
-  private string[] positions = ["lg:-top-[22rem] lg:right-[13rem]", "lg:-top-[9rem] lg:right-[4rem]", "lg:top-[3rem] lg:right-[16rem]"];
-  private string[] cards = ["0", "0", "0", "0", "0"];
+  private List<HorizontalGalleryImage> Images;
+  private System.Timers.Timer timer;
 
   protected override void OnInitialized() {
     base.OnInitialized();
+
+    for (int i = 0; i < 5; i++) {
+      Images = HorizontalGalleryImageHelper.GetGalleryImages();
+    }
+
+    // Set up the timer
+    timer = new System.Timers.Timer(50);
+    timer.Elapsed += UpdateImages;
+    timer.Start();
+  }
+
+  private void UpdateImages(object sender, System.Timers.ElapsedEventArgs e) {
+    InvokeAsync(() => {
+      var containerWidth = 768; // Width of a single card
+
+      foreach (var image in Images) {
+        image.TranslateX -= 2; // Adjust movement speed as needed
+
+        if (image.TranslateX <= (-containerWidth * image.Id) - containerWidth) {
+          image.TranslateX += (containerWidth * Images.Count);
+        }
+      }
+
+      StateHasChanged();
+    });
+  }
+
+  public void Dispose() {
+    timer?.Dispose();
   }
 }
