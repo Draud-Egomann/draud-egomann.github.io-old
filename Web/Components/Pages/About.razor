@@ -1,0 +1,43 @@
+﻿@page "/about"
+@using Web.Components.Components;
+
+<PageTitle>Justin Urbanek - Über mich</PageTitle>
+
+<HeroBanner Title="Lorem Ipsum dolor"
+  SubTitle="sit amet consectetur adipisici elit..."
+  HasButton="false"
+  IsBigView="false" />
+
+@* ContentGrid2 *@
+<div class="w-full relative own-bg-primary">
+  <div class="container flex flex-wrap lg:flex-nowrap justify-around items-center gap-8 py-12">
+    <div class="w-full lg:w-1/3 flex flex-col items-center gap-8 mx-8 py-48 px-12 lg:px-0">
+      <Heading Size="HeadingSize.Is2" Class="text-white">
+        Lorem Ipsum dolor
+      </Heading>
+
+      <Paragraph Class="text-white">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+        et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+        amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+        no sea takimata sanctus est Lorem ipsum dolor sit amet.
+      </Paragraph>
+    </div>
+
+    <div class="w-full lg:w-2/3 relative">
+      @foreach (var position in positions) {
+        <img src="https://placehold.co/368x256" alt="" class="static lg:absolute shadow-gray-800 shadow-md @(position)" />
+      }
+    </div>
+  </div>
+</div>
+
+@code {
+  private string[] positions = ["lg:-top-[22rem] lg:right-[13rem]", "lg:-top-[9rem] lg:right-[4rem]", "lg:top-[3rem] lg:right-[16rem]"];
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+  }
+}
