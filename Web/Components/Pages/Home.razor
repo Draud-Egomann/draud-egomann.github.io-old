@@ -2,7 +2,7 @@
 
 <PageTitle>Justin Urbanek</PageTitle>
 
-<div class="w-full h-[95vh] own-bg-secondary">
+<div class="w-full relative h-[95vh] bg-heroBanner">
   <div class="h-full flex flex-col justify-center items-center md:items-baseline gap-8 container">
     <Heading Size="HeadingSize.Is1">Justin Urbanek - Ich</Heading>
 
@@ -12,5 +12,21 @@
       your IT support and operations teams have richer contextual information to rapidly
       respond to requests, incidents, and changes.
     </Paragraph>
+
+    <Button
+      Class="flex justify-center !text-2xl !text-white !rounded-full !hover:text-black !hover:bg-white w-64"
+      Size="Size.Large"
+      Color="Color.Secondary"
+      Outline
+    >
+      Mehr über mich
+      <Icon Name="IconName.ArrowRight" Class="ml-4 animate-bounce-horizontal" />
+    </Button>
+
+    <Icon
+      Class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white animate-bounce"
+      Name="IconName.ArrowDown"
+      IconSize="IconSize.x2"
+    />
   </div>
 </div>
