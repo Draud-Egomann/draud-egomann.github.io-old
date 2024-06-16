@@ -16,7 +16,7 @@
           @foreach (var navLink in navLinks) {
             <NavLink
               href="@navLink.Url"
-              class="@($"navbar-btn mx-2 px-4 py-2 rounded-md {(currentUrl == navLink.Url ? "navbar-btn-active" : "")}")"
+              class="@($"navbar-btn my-2 lg:my-0 mx-2 px-4 py-2 rounded-md {(currentUrl == navLink.Url ? "navbar-btn-active" : "")}")"
             >
               @navLink.Name
             </NavLink>
