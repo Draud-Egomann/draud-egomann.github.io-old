@@ -1,4 +1,6 @@
-﻿<div class="w-full bg-footerBanner text-white">
+﻿@inject NavigationManager NavigationManager
+
+<div class="w-full text-white @(background)">
   <div class="flex flex-col sm:flex-row justify-between items-center container py-4">
     <p class="inline text-2xl font-bold text-white my-4 sm:my-0">
       <Icon Name="IconName.Copyright" />
@@ -26,5 +28,12 @@
 </div>
 
 @code {
+  private string? currentUrl;
+  private string background => string.IsNullOrEmpty(currentUrl) ? "bg-footerBanner1" : "bg-footerBanner2";
 
+  protected override void OnInitialized() {
+    base.OnInitialized();
+    
+    currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+  }
 }
