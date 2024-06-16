@@ -61,12 +61,17 @@
 }
 
 .bg-heroBanner {
-  background: radial-gradient(circle 640px at 20% 50%, rgba(253, 44, 77, 1) 0%, rgba(14, 39, 76, 1) 100%);
+  background: radial-gradient(circle 640px at 20% 50%, var(--accent) 0%, var(--secondary) 100%);
 }
 
-.bg-footerBanner {
-  background: rgb(29,35,40);
-  background: linear-gradient(160deg, rgba(29,35,40,1) 50%, rgba(253,44,77,1) 100%);
+.bg-footerBanner1 {
+  background: var(--primary);
+  background: linear-gradient(160deg, var(--primary) 50%, var(--accent) 100%);
+}
+
+.bg-footerBanner2 {
+  background: var(--secondary);
+  background: linear-gradient(160deg, var(--secondary) 50%, var(--accent) 100%);
 }
 
 .navbar-btn {
