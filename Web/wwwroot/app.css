@@ -5,6 +5,13 @@
   --accent2: #F4DBD8;
 }
 
+.bgImg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .own-bg-primary {
   background-color: var(--primary);
 }
@@ -85,7 +92,6 @@
 
 .animate-bounce-horizontal {
   animation: bounce-horizontal 1s infinite 3s;
-
 }
 
 @keyframes bounce-horizontal {
