@@ -37,6 +37,22 @@
   color: var(--accent2);
 }
 
+.own-border-primary {
+  border-color: var(--primary);
+}
+
+.own-border-secondary {
+  border-color: var(--secondary);
+}
+
+.own-border-accent {
+  border-color: var(--accent);
+}
+
+.own-border-accent2 {
+  border-color: var(--accent2);
+}
+
 .bg-heroBanner {
   background: radial-gradient(circle 640px at 20% 50%, rgba(253, 44, 77, 1) 0%, rgba(14, 39, 76, 1) 100%);
 }

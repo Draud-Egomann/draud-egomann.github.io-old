@@ -1,0 +1,41 @@
+﻿<svg xmlns:xlink="http://www.w3.org/1999/xlink" width=@Width xmlns="http://www.w3.org/2000/svg" height=@Height viewBox="-8 -8 272 272" style="-webkit-print-color-adjust: exact;" class=@Class fill="none" version="1.1">
+  <g rx="0" ry="0">
+    <g>
+      <g class="fills">
+        <path rx="0" ry="0" d="M0.000,251.124L256.000,251.124L0.000,251.124Z" />
+      </g>
+      <g class="strokes">
+        <g class="stroke-shape">
+          <path rx="0" ry="0" d="M0.000,251.124L256.000,251.124L0.000,251.124Z" style="fill: none; stroke-width: @(StrokeWidth); stroke: @(Stroke); stroke-opacity: 1;" />
+        </g>
+      </g>
+    </g>
+    <g>
+      <g class="fills">
+        <path rx="0" ry="0" d="M248.006,0.000L248.006,256.000L248.006,0.000Z" />
+      </g>
+      <g class="strokes">
+        <g class="stroke-shape">
+          <path rx="0" ry="0" d="M248.006,0.000L248.006,256.000L248.006,0.000Z" style="fill: none; stroke-width: @(StrokeWidth); stroke: @(Stroke); stroke-opacity: 1;" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  public ushort Width { get; set; } = 200;
+
+  [Parameter]
+  public ushort Height { get; set; } = 200;
+
+  [Parameter]
+  public string Stroke { get; set; } = "#000";
+
+  [Parameter]
+  public ushort StrokeWidth { get; set; } = 16;
+}

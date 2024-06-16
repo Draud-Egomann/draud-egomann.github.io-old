@@ -1,8 +1,10 @@
 ﻿@page "/"
+@using Web.Components.Components
 
 <PageTitle>Justin Urbanek</PageTitle>
 
 <div class="w-full relative h-[95vh] bg-heroBanner">
+  @* Hero Component *@
   <div class="h-full flex flex-col justify-center items-center md:items-baseline gap-8 container">
     <Heading Size="HeadingSize.Is1">Justin Urbanek - Ich</Heading>
 
@@ -13,20 +15,34 @@
       respond to requests, incidents, and changes.
     </Paragraph>
 
-    <Button
-      Class="flex justify-center !text-2xl !text-white !rounded-full !hover:text-black !hover:bg-white w-64"
-      Size="Size.Large"
-      Color="Color.Secondary"
-      Outline
-    >
+    <Button Class="flex justify-center !text-2xl !text-white !rounded-full !hover:text-black !hover:bg-white w-64"
+            Size="Size.Large"
+            Color="Color.Secondary"
+            Outline>
       Mehr über mich
       <Icon Name="IconName.ArrowRight" Class="ml-4 animate-bounce-horizontal" />
     </Button>
 
-    <Icon
-      Class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white animate-bounce"
-      Name="IconName.ArrowDown"
-      IconSize="IconSize.x2"
-    />
+    <Icon Class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white animate-bounce"
+          Name="IconName.ArrowDown"
+          IconSize="IconSize.x2" />
+  </div>
+
+  @* About me Section *@
+  <div class="own-bg-primary text-white flex items-center justify-center min-h-screen">
+    <div class="container min-h-screen relative flex justify-center items-center m-8">
+      <div class="flex flex-col items-center gap-8">
+        <img src="./me.png" alt="Image of myself" class="size-96" />
+
+        <div class="border-b-8 own-border-accent w-[40rem]"></div>
+
+        <Heading Size="HeadingSize.Is2" Class="italic">
+          Lorem Ipsum dolor sit amet
+        </Heading>
+      </div>
+
+      <AngleVector Class="absolute top-0 left-0 rotate-180" Width="200" Height="200" Stroke="#FD2C4D" StrokeWidth="16" />
+      <AngleVector Class="absolute bottom-0 right-0" Width="200" Height="200" Stroke="#FD2C4D" StrokeWidth="16" />
+    </div>
   </div>
 </div>
