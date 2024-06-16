@@ -1,87 +1,34 @@
 ﻿@page "/"
 @using Web.Components.Components
+@using Web.Helper
+@using Web.Models
+@inject NavigationManager NavigationManager
 
 <PageTitle>Justin Urbanek</PageTitle>
 
-<div class="w-full relative h-[95vh] bg-heroBanner">
-  @* Hero Component *@
-  <div class="h-full flex flex-col justify-center items-center md:items-baseline gap-8 container">
-    <div class="mx-2">
+<HeroBanner Title="Justin Urbanek - Ich"
+  Paragraph="Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes."
+  HasButton="true"
+  OnClick=NavigateToAbout
+  IsBigView="true"
+  ButtonText="Mehr über mich" />
 
-      <Heading Size="HeadingSize.Is1" Class="text-4xl lg:text-5xl my-2">Justin Urbanek - Ich</Heading>
+<Catchphrase ImageUrl="./me.png" Text="Lorem Ipsum dolor sit amet" />
 
-      <Paragraph Class="max-w-md text-white">
-        Track work across the enterprise through an open, collaborative platform. Link
-        issues across Jira and ingest data from other software development tools, so
-        your IT support and operations teams have richer contextual information to rapidly
-        respond to requests, incidents, and changes.
-      </Paragraph>
-    </div>
+<ContentGrid MainTitle="Erfahrung"
+  MainText="Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes."
+  MediaLinkItems="mediaLinkItems" />
 
-    <Button Class="flex justify-center !text-2xl !text-white !rounded-full !hover:text-black !hover:bg-white w-64"
-            Size="Size.Large"
-            Color="Color.Secondary"
-            Outline>
-      Mehr über mich
-      <Icon Name="IconName.ArrowRight" Class="ml-4 animate-bounce-horizontal" />
-    </Button>
+@code {
+  List<MediaLinkItem> mediaLinkItems;
+  
+  protected override void OnInitialized() {
+    base.OnInitialized();
 
-    <Icon Class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white animate-bounce"
-          Name="IconName.ArrowDown"
-          IconSize="IconSize.x2" />
-  </div>
-</div>
+    mediaLinkItems = MediaLinkItemHelper.GetExperienceContent();
+  }
 
-@* About me Section *@
-<div class="own-bg-primary text-white flex items-center justify-center lg:min-h-screen">
-  <div class="container lg:min-h-screen relative flex justify-center items-center m-8">
-    <div class="flex flex-col items-center gap-8">
-      <img src="./me.png" alt="Image of myself" class="size-full sm:size-96" />
-
-      <div class="border-b-8 own-border-accent w-full lg:w-[40rem]"></div>
-
-      <Heading Size="HeadingSize.Is2" Class="italic">
-        Lorem Ipsum dolor sit amet
-      </Heading>
-    </div>
-
-    <AngleVector Class="hidden lg:block absolute top-0 left-0 rotate-180" Width="200" Height="200" Stroke="#FD2C4D" StrokeWidth="16" />
-    <AngleVector Class="hidden lg:block absolute bottom-0 right-0" Width="200" Height="200" Stroke="#FD2C4D" StrokeWidth="16" />
-  </div>
-</div>
-
-@* Experience Section *@
-<div class="w-full relative own-bg-secondary">
-  <div class="container flex flex-wrap lg:flex-nowrap justify-around items-center gap-8 py-12">
-    <div class="w-full lg:w-1/4 flex flex-col items-center gap-8 px-12 lg:px-0">
-      <Heading Size="HeadingSize.Is2" Class="text-white">
-        Erfahrung
-      </Heading>
-
-      <Paragraph Class="text-white">
-        Track work across the enterprise through an open, collaborative platform. Link
-        issues across Jira and ingest data from other software development tools, so
-        your IT support and operations teams have richer contextual information to rapidly
-        respond to requests, incidents, and changes.
-      </Paragraph>
-    </div>
-
-    <div class="w-full lg:w-3/4 flex flex-wrap justify-center">
-      @foreach (var i in Enumerable.Range(0, 4)) {
-        <div class="@($"w-full sm:w-1/2 p-8 flex justify-center items-center {(i % 2 == 0 ? "lg:justify-end" : "lg:justify-start")}")">
-          <div class="relative bg-gray-600 rounded-lg w-full max-w-[368px] h-[256px] overflow-hidden">
-            <button class="relative w-full h-full rounded-lg overflow-hidden p-8">
-              @* Separate text and image to separate hover effects *@
-              <div class="absolute inset-0 bgImg bg-[url('https://placehold.co/386x256')] transform-gpu duration-300 hover:scale-125"></div>
-
-              <div class="absolute bottom-8 left-8 flex items-center gap-4">
-                <Icon Name="IconName.ArrowRight" IconSize="IconSize.Large" />
-                <p class="text-xl">askdhkdsh</p>
-              </div>
-            </button>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
-</div>
+  private void NavigateToAbout() {
+    NavigationManager.NavigateTo("/about");
+  }
+}

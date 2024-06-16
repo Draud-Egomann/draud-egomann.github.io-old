@@ -1,0 +1,71 @@
+﻿<div class="w-full relative h-[95vh] bg-heroBanner @(Class + Height)">
+  <div class="h-full flex flex-col justify-center items-center md:items-baseline gap-8 container">
+    <div class="flex flex-col gap-4 mx-2 py-4">
+      <Heading Size="HeadingSize.Is1" Class="text-4xl lg:text-5xl my-2">
+        @Title
+      </Heading>
+
+      <Heading Size="HeadingSize.Is2" Class="text-3xl lg:text-4xl my-2">
+        @SubTitle
+      </Heading>
+
+      <Paragraph Class="max-w-md text-white">
+        @Paragraph
+      </Paragraph>
+
+      @if (HasButton) {
+        <Button Class="flex justify-center !text-2xl !text-white !rounded-full !hover:text-black !hover:bg-white w-64"
+                Size="Size.Large"
+                Color="Color.Secondary"
+                @onclick="OnClick"
+                Outline>
+          @ButtonText
+          <Icon Name="IconName.ArrowRight" Class="ml-4 animate-bounce-horizontal" />
+        </Button>
+      }
+    </div>
+
+    @if (IsBigView) {
+      <Icon Class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white animate-bounce"
+            Name="IconName.ArrowDown"
+            IconSize="IconSize.x2" />
+    }
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public string Title { get; set; } = default!;
+
+  [Parameter]
+  [EditorRequired]
+  public bool HasButton { get; set; } = default!;
+
+  [Parameter]
+  [EditorRequired]
+  public bool IsBigView { get; set; } = default!;
+
+  [Parameter]
+  public string? SubTitle { get; set; }
+
+  [Parameter]
+  public string? Paragraph { get; set; }
+
+  [Parameter]
+  public string? ButtonText { get; set; }
+
+  [Parameter]
+  public EventCallback OnClick { get; set; } = EventCallback.Empty;
+
+  private string Height => IsBigView ? " 95vh " : " 40vh ";
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    if (HasButton && string.IsNullOrEmpty(ButtonText)) throw new ArgumentException("ButtonText is required when HasButton is true");
+  }
+}
