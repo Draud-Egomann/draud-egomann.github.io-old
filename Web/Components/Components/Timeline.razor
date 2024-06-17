@@ -1,0 +1,39 @@
+﻿@using Web.Models
+
+<div class="w-full own-bg-primary">
+  <div class="timeline py-24 @(Class)">
+    @foreach (var item in TimelineItems) {
+      <div class="timeline-container @GetContainerClass(item.Index)">
+        <div class="content duration-500 @GetContentClass(item.Index)">
+          <div class="relative z-20 w-full h-auto py-2 px-2 shadow-lg text-lg text-center text-white from-green-400 to-green-700 @GetYearContainerClass(item.Index)">
+            <p>
+              @item.Year
+            </p>
+          </div>
+          <div class="relative z-10 py-4 px-2 text-balance ring-1 ring-medium-200 shadow-lg rounded-b-lg bg-white @GetDescriptionContainerClass(item.Index)">
+            <p class="font-bold">
+              @item.Title
+            </p>
+            <p class="mt-2">
+              @item.Description
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public List<TimelineItem> TimelineItems { get; set; }
+
+  private string GetContainerClass(int index) => index % 2 == 0 ? "left" : "right";
+  private string GetContentClass(int index) => index % 2 == 0 ? "hover:-translate-x-2 lg:hover:translate-x-2" : "hover:-translate-x-2";
+  private string GetYearContainerClass(int index) => index % 2 == 0 ? "rounded-l-full lg:rounded-l-none lg:rounded-r-full bg-gradient-to-bl lg:bg-gradient-to-br" : "rounded-l-full bg-gradient-to-bl";
+  private string GetDescriptionContainerClass(int index) => index % 2 == 0 ? "mr-2 ml-8 lg:mr-8 lg:ml-2" : "mr-2 ml-8";
+}

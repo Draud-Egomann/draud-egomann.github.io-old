@@ -1,0 +1,23 @@
+﻿@page "/experience"
+@using Web.Components.Components;
+@using Web.Models;
+@using Web.Helper
+
+<PageTitle>Justin Urbanek - Erfahrung</PageTitle>
+
+<HeroBanner Title="Lorem Ipsum dolor"
+            SubTitle="sit amet consectetur adipisici elit..."
+            HasButton="false"
+            IsBigView="false" />
+
+<Timeline TimelineItems=@TimelineItems />
+
+@code {
+  private List<TimelineItem> TimelineItems { get; set; } = default!;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    TimelineItems = TimelineItemHelper.GetTimelineItems();
+  }
+}
