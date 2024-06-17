@@ -20,17 +20,20 @@
   ButtonText="Meine Projekte ansehen"
   OnClick=NavigateToProjects />
 
-<ContentGrid3 />
+<ContentGrid3 Title="Meine Freizeitaktivitäten"
+              Images=@MediaImages />
 
 @code {
   private List<HorizontalGalleryImage> Images { get; set; } = default!;
   private List<CarouselWord> CarouselWords { get; set; } = default!;
+  private List<MediaImage> MediaImages { get; set; } = default!;
 
   protected override void OnInitialized() {
     base.OnInitialized();
 
     Images = HorizontalGalleryImageHelper.GetGalleryImages();
     CarouselWords = CarouselWordHelper.GetCarouselWords();
+    MediaImages = MediaImageHelper.GetMediaImages();
   }
 
   private void NavigateToProjects() {
