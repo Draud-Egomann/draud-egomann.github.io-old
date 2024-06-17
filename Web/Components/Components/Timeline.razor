@@ -7,7 +7,7 @@
         <div class="content duration-500 @item.Classes[1]">
           <div class="w-full h-auto relative z-20 text-lg text-center text-white from-[#fd2c4d] to-[rgb(253, 44, 77, 28,39)] py-2 px-2 shadow-lg @item.Classes[2]">
             <Heading Size="HeadingSize.Is3" Class="w-full text-white text-center">
-              @item.Year
+              @item.Year.Year
             </Heading>
           </div>
           <div class="relative z-10 py-4 px-2 text-black text-balance bg-white ring-1 ring-medium-200 shadow-lg rounded-b-lg @item.Classes[3]">
@@ -38,6 +38,8 @@
     if (TimelineItems == null) {
       throw new ArgumentNullException(nameof(TimelineItems));
     }
+
+    TimelineItems = TimelineItems.OrderBy(x => x.Year).ToList();
 
     for (byte i = 0; i < TimelineItems.Count; i++) {
       TimelineItems[i].Classes = new() {
