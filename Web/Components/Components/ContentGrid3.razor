@@ -1,4 +1,5 @@
-﻿@using Web.Models
+﻿@using Microsoft.AspNetCore.Components.Sections
+@using Web.Models
 
 <div class="w-full relative own-bg-primary @(Class)">
   <div class="container flex flex-wrap justify-center items-center gap-8 py-12">
@@ -19,7 +20,7 @@
 
             <img src=@image.ImageUrl alt=@image.AltText class="w-full h-auto rounded-xl" />
 
-            <button @onclick="() => OnButtonClicked(image)" class="btn-overlay absolute z-10 left-1/2 top-1/2 p-0">
+            <button @onclick="() => ShowModal(image)" class="btn-overlay absolute z-10 left-1/2 top-1/2 p-0">
               <Icon Name="IconName.ArrowUp"
                     IconSize="IconSize.x3"
                     Class="bg-white shadow-gray-600 shadow-md rounded-full py-4 px-5" />
@@ -30,6 +31,19 @@
       }
     </div>
 
+    <Modal @ref="modalRef" Class="fixed w-fit h-fit !top-1/2 !left-1/2 !-translate-x-1/2 !-translate-y-1/2">
+      <ModalContent Centered>
+        <ModalHeader>
+          <ModalTitle>@CurrentImage?.AltText</ModalTitle>
+          <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+          <p class="text-xl lg:text-3xl text-center text-white mt-16 mb-8 md:mt-0 md:mb-0 mx-4">
+            @CurrentImage?.Text
+          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   </div>
 </div>
 
@@ -74,11 +88,17 @@
   [EditorRequired]
   public List<MediaImage> Images { get; set; } = default!;
 
+  private MediaImage? CurrentImage { get; set; }
+
+  private Modal modalRef;
+
   protected override void OnInitialized() {
     base.OnInitialized();
   }
 
-  private void OnButtonClicked(MediaImage image) {
-    Console.WriteLine($"Button clicked for image: {image}");
+  private Task ShowModal(MediaImage image) {
+    CurrentImage = image;
+
+    return modalRef.Show();
   }
 }
