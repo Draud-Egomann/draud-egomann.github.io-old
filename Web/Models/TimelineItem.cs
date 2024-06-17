@@ -1,9 +1,8 @@
 ﻿namespace Web.Models;
 
 public class TimelineItem {
-  public int Index { get; set; }
-  public string Year { get; set; }
-  public string Title { get; set; }
-  public string Description { get; set; }
-  public List<string> Classes { get; set; }
+  public DateTime Year { get; set; }
+  public string Title { get; set; } = default!;
+  public string Description { get; set; } = default!;
+  public List<string> Classes { get; set; } = [];
 }
