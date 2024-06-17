@@ -1,16 +1,16 @@
 ﻿@using Web.Models
 
-<div class="w-full own-bg-primary">
-  <div class="timeline py-24 @(Class)">
+<div class="w-full own-bg-primary py-12">
+  <div class="timeline relative container py-24 @(Class)">
     @foreach (var item in TimelineItems) {
       <div class="timeline-container @item.Classes[0]">
         <div class="content duration-500 @item.Classes[1]">
-          <div class="relative z-20 w-full h-auto py-2 px-2 shadow-lg text-lg text-center text-white from-green-400 to-green-700 @item.Classes[2]">
-            <p>
+          <div class="w-full h-auto relative z-20 text-lg text-center text-white from-[#fd2c4d] to-[rgb(253, 44, 77, 28,39)] py-2 px-2 shadow-lg @item.Classes[2]">
+            <Heading Size="HeadingSize.Is3" Class="w-full text-white text-center">
               @item.Year
-            </p>
+            </Heading>
           </div>
-          <div class="relative z-10 py-4 px-2 text-balance ring-1 ring-medium-200 shadow-lg rounded-b-lg bg-white @item.Classes[3]">
+          <div class="relative z-10 py-4 px-2 text-black text-balance bg-white ring-1 ring-medium-200 shadow-lg rounded-b-lg @item.Classes[3]">
             <p class="font-bold">
               @item.Title
             </p>
