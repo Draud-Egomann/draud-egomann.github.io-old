@@ -6,23 +6,30 @@ public static class TimelineItemHelper {
   public static List<TimelineItem> GetTimelineItems() {
     return [
       new() {
-        Index = 1,
-        Year = "2019",
-        Title = "First item",
-        Description = "This is the first item in the timeline."
+        Year = new DateTime(2019, 1, 1),
+        Title = "Lorem Ipsum dolor",
+        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       new() {
-        Index = 2,
-        Year = "2020",
-        Title = "Second item",
-        Description = "This is the second item in the timeline."
+        Year = new DateTime(2019, 2, 1),
+        Title = "Lorem Ipsum dolor",
+        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       new() {
-        Index = 3,
-        Year = "2021",
-        Title = "Third item",
-        Description = "This is the third item in the timeline."
-      }
+        Year = new DateTime(2020, 1, 1),
+        Title = "Lorem Ipsum dolor",
+        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      new() {
+        Year = new DateTime(2020, 2, 1),
+        Title = "Lorem Ipsum dolor",
+        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      new() {
+        Year = new DateTime(2021, 1, 1),
+        Title = "Lorem Ipsum dolor",
+        Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
     ];
   }
 }
