@@ -5,4 +5,5 @@ public class TimelineItem {
   public string Year { get; set; }
   public string Title { get; set; }
   public string Description { get; set; }
+  public List<string> Classes { get; set; }
 }
