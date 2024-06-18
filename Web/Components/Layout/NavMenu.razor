@@ -7,7 +7,7 @@
 <div>
   <nav class="w-full fixed z-40 own-bg-primary text-white px-4">
     <div class="flex flex-col sm:flex-row justify-between items-center container py-4">
-      <p class="inline text-4xl font-bold text-white my-4 sm:my-0">
+      <p class="inline text-3xl sm:text-4xl font-bold text-white my-4 sm:my-0">
         Justin Urbanek
       </p>
 
@@ -36,7 +36,7 @@
           </Dropdown>
         </div>
 
-        <Icon Name="@(!isNavBarOpen ? IconName.Bars : IconName.Times)" IconSize="IconSize.x2" Class="block lg:hidden" @onclick="ToggleNavBar" />
+        <Icon Name="@(!isNavBarOpen ? IconName.Bars : IconName.Times)" Class="text-[1.75rem] sm:text-[2rem] block lg:hidden" @onclick="ToggleNavBar" />
       </div>
     </div>
   </nav>
