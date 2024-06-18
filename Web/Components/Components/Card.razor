@@ -1,53 +1,92 @@
-﻿<div class="flex justify-around items-center own-bg-primary">
-  <div class="relative w-1/3">
-    <div class="relative z-20 bg-gradient-to-b from-[#FD2C4D] to-[#FD2C4D50] px-8 py-16 rounded-3xl">
+﻿@using Web.Models
 
-      <div class="relative z-20 flex flex-col justify-center items-center gap-4">
 
-        <Heading Size="HeadingSize.Is2" Class="w-full text-white text-center">
-          Lorem Ipsum dolor
-        </Heading>
+<div class="relative @(Class)">
+  <div class="relative z-20 bg-gradient-to-b px-4 lg:px-8 py-12 lg:py-16 rounded-3xl @Item.Classes[0]">
 
-        <Paragraph TextSize="TextSize.Large" Class="w-full text-white text-center">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </Paragraph>
+    <div class="relative z-20 flex flex-col justify-center items-center gap-4">
 
-        <Button Color="Color.Info" Size="Size.Large">
+      <Heading Size="HeadingSize.Is2" Class="w-full text-white text-center">
+        @Item.Title
+      </Heading>
+
+      <Paragraph TextSize="TextSize.Large" Class="w-full text-white text-center">
+        @Item.Description
+      </Paragraph>
+
+      @if (Item.HasMoreInfo) {
+        <Button Size="Size.Large" Class="@Item.Classes[1]">
           Mehr erfahren
         </Button>
+      }
 
-      </div>
     </div>
-
-    <div class="w-full h-full absolute z-10 top-0 left-0 bg-[#930026] rounded-3xl rotate-12"></div>
   </div>
 
-  <div class="relative w-1/3">
-    <div class="relative z-20 bg-gradient-to-b from-[#0E274C] to-[#0E274C50] px-8 py-16 rounded-3xl">
-
-      <div class="relative z-20 flex flex-col justify-center items-center gap-4">
-
-        <Heading Size="HeadingSize.Is2" Class="w-full text-white text-center">
-          Lorem Ipsum dolor
-        </Heading>
-
-        <Paragraph TextSize="TextSize.Large" Class="w-full text-white text-center">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </Paragraph>
-
-        <Button Color="Color.Danger" Size="Size.Large">
-          Mehr erfahren
-        </Button>
-
-      </div>
-    </div>
-
-    <div class="w-full h-full absolute z-10 top-0 left-0 bg-[#1c498e] rounded-3xl rotate-12"></div>
-  </div>
+  <div class="w-full h-full absolute z-10 top-0 left-0 rounded-3xl rotate-6 lg:rotate-12 @Item.Classes[2]"></div>
 </div>
 
+<style>
+  .own-btn-accent {
+    color: #fff;
+    background-color: var(--accent);
+  }
+
+    .own-btn-accent:hover {
+      filter: brightness(85%);
+    }
+
+    .own-btn-accent:active {
+      filter: brightness(75%);
+    }
+
+  .own-btn-secondary {
+    color: #fff;
+    background-color: var(--secondary);
+  }
+
+    .own-btn-secondary:hover {
+      filter: brightness(85%);
+    }
+
+    .own-btn-secondary:active {
+      filter: brightness(75%);
+    }
+</style>
+
 @code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public ProjectMenuItem Item { get; set; } = default!;
+
+  [Parameter]
+  [EditorRequired]
+  public int Index { get; set; }
+
   protected override void OnInitialized() {
     base.OnInitialized();
+
+    if (Item == null) {
+      throw new ArgumentNullException(nameof(Item));
+    }
+
+    if (Index < 0) {
+      throw new ArgumentOutOfRangeException(nameof(Index));
+    }
+
+    Item.HasMoreInfo = !string.IsNullOrEmpty(Item.MoreInfoText);
+
+    Item.Classes = new() {
+      CardBg(Index),
+      BtnColor(Index),
+      CardBgBg(Index),
+    };
   }
+
+  string CardBg(int index) => index % 2 == 0 ? "from-[#FD2C4D] to-[#FD2C4D50]" : "from-[#0E274C] to-[#0E274C50]";
+  string BtnColor(int index) => index % 2 == 0 ? "own-btn-secondary" : "own-btn-accent";
+  string CardBgBg(int index) => index % 2 == 0 ? "bg-[#930026]" : "bg-[#1c498e]";
 }

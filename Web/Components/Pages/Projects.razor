@@ -1,5 +1,7 @@
 ﻿@page "/projects"
 @using Web.Components.Components;
+@using Web.Models
+@using Web.Helper
 
 <PageTitle>Justin Urbanek - Projekte</PageTitle>
 
@@ -8,10 +10,14 @@
             HasButton="false"
             IsBigView="false" />
 
-<Web.Components.Components.Card />
+<Cards Items=@ProjectMenuItems />
 
 @code {
+  private List<ProjectMenuItem> ProjectMenuItems { get; set; } = default!;
+
   protected override void OnInitialized() {
     base.OnInitialized();
+
+    ProjectMenuItems = ProjectMenuItemHelper.GetProjectMenuItems();
   }
 }
