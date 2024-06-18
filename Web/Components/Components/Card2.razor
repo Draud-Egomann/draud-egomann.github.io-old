@@ -4,15 +4,19 @@
 <Card Class="@(Class)">
   <CardImage Source=@Card.ImageUrl Alt=@Card.AltText />
   <CardBody Class="flex flex-col justify-center items-center gap-8">
-    <Button Color="Color.Primary" Class="w-full flex justify-center text-lg py-4">Zeigen</Button>
+    <Button @onclick=ToggleText Color="Color.Primary" Class="w-full flex justify-center text-lg py-4">
+      @BtnText
+    </Button>
 
-    <div class="flex items-center gap-2 border-2 border-white rounded-md p-4">
-      <CardTitle Size="5" Class="!m-0 !mx-2 italic">@Card.Text</CardTitle>
+    @if (TextVisible) {
+      <div class="flex items-center gap-2 border-2 border-white rounded-md p-4 animate-fade-in">
+        <CardTitle Size="5" Class="!m-0 !mx-2 italic">@Card.Text</CardTitle>
 
-      <Button Color="Color.Secondary" Class="p-2" @onclick="CopyText">
-        <Icon Name="IconName.Copy" />
-      </Button>
-    </div>
+        <Button Color="Color.Secondary" Class="p-2" @onclick="CopyText">
+          <Icon Name="IconName.Copy" />
+        </Button>
+      </div>
+    }
   </CardBody>
 </Card>
 
@@ -24,7 +28,12 @@
   [EditorRequired]
   public ContactCard Card { get; set; } = default!;
 
+  private bool TextVisible { get; set; } = false;
+  private string BtnText => TextVisible ? "Verbergen" : "Zeigen";
+
   private async Task CopyText() {
     await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", Card.Text);
   }
+
+  private void ToggleText() => TextVisible = !TextVisible;
 }
