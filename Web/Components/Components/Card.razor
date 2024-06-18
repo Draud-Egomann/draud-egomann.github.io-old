@@ -15,7 +15,7 @@
       </Paragraph>
 
       @if (Item.HasMoreInfo) {
-        <Button Size="Size.Large" Class="@Item.Classes[1]">
+        <Button @onclick="CardButtonClicked" Size="Size.Large" Class="@Item.Classes[1]">
           Mehr erfahren
         </Button>
       }
@@ -64,7 +64,10 @@
 
   [Parameter]
   [EditorRequired]
-  public int Index { get; set; }
+  public int Index { get; set; } = default!;
+
+  [Parameter]
+  public EventCallback<ProjectMenuItem> OnCardClick { get; set; }
 
   protected override void OnInitialized() {
     base.OnInitialized();
@@ -86,7 +89,11 @@
     };
   }
 
-  string CardBg(int index) => index % 2 == 0 ? "from-[#FD2C4D] to-[#FD2C4D50]" : "from-[#0E274C] to-[#0E274C50]";
-  string BtnColor(int index) => index % 2 == 0 ? "own-btn-secondary" : "own-btn-accent";
-  string CardBgBg(int index) => index % 2 == 0 ? "bg-[#930026]" : "bg-[#1c498e]";
+  private string CardBg(int index) => index % 2 == 0 ? "from-[#FD2C4D] to-[#FD2C4D50]" : "from-[#0E274C] to-[#0E274C50]";
+  private string BtnColor(int index) => index % 2 == 0 ? "own-btn-secondary" : "own-btn-accent";
+  private string CardBgBg(int index) => index % 2 == 0 ? "bg-[#930026]" : "bg-[#1c498e]";
+
+  private void CardButtonClicked() {
+    OnCardClick.InvokeAsync(Item);
+  }
 }
