@@ -1,0 +1,23 @@
+﻿@page "/contact"
+@using Web.Components.Components;
+@using Web.Models
+@using Web.Helper
+
+<PageTitle>Justin Urbanek - Kontakt</PageTitle>
+
+<HeroBanner Title="Lorem Ipsum dolor"
+            SubTitle="sit amet consectetur adipisici elit..."
+            HasButton="false"
+            IsBigView="false" />
+
+<Cards2 Cards=@ContactCards />
+
+@code {
+  private List<ContactCard> ContactCards { get; set; } = default!;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    ContactCards = ContactCardHelper.GetContactCards();
+  }
+}
