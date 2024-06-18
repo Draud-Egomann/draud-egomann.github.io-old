@@ -2,7 +2,9 @@
 
 <div class="relative @(Class)">
   @if (Slides != null) {
-    <div style="height:50vh;">
+    @* It's important to aknowledge that if you test the UI you have to test it with real mobile devices (or real simulators),
+       because the browser's responsive design mode is not accurate. *@
+    <div>
       <img class="w-full object-cover" src="@Slides[currentSlideIndex].ImageUrl" />
     </div>
 
