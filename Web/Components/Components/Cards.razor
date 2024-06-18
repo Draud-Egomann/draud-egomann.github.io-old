@@ -1,4 +1,5 @@
 ﻿@using Web.Models
+@using Web.Helper
 
 <div class="flex flex-wrap justify-around items-center own-bg-primary gap-32 lg:gap-16 py-24 overflow-hidden @(Class)">
   @for (int i = 0; i < Items.Count; i++) {
@@ -8,20 +9,27 @@
                                     OnCardClick="HandleCardClick" />
   }
 
-  <Modal @ref="modalRef" Class="fixed w-3/5 h-fit !top-1/2 !left-1/2 !-translate-x-1/2 !-translate-y-1/2">
-    <ModalContent Centered>
+  <Modal @ref="modalRef" Class="fixed px-0 w-full h-fit !top-1/2 !left-1/2 !-translate-x-1/2 !-translate-y-1/2">
+    <ModalContent Size="ModalSize.ExtraLarge" Centered>
       <ModalHeader>
         <ModalTitle>@CurrentItem?.Title</ModalTitle>
         <CloseButton />
       </ModalHeader>
       <ModalBody>
-        <p class="text-xl lg:text-3xl text-center text-white mt-16 mb-8 md:mt-0 md:mb-0 mx-4">
-          @CurrentItem?.Description
-        </p>
+        <div class="flex flex-row-reverse justify-around items-center gap-4">
+          @* <img src="https://placehold.co/300" alt="Placeholder image" class="w-full h-auto rounded-xl" /> *@
+          <ImageCarosel Class="w-1/2" Sildes=@Slides />
 
-        <p class="text-xl lg:text-3xl text-center text-white mt-16 mb-8 md:mt-0 md:mb-0 mx-4">
-          @CurrentItem?.MoreInfoText
-        </p>
+          <div class="w-1/2 flex flex-col justify-center items-center gap-4 mt-5">
+            <p class="text-lg sm:text-xl lg:text-3xl text-center text-white">
+              @CurrentItem?.Description
+            </p>
+
+            <p class="text-lg sm:text-xl lg:text-3xl text-center text-white">
+              @CurrentItem?.MoreInfoText
+            </p>
+          </div>
+        </div>
       </ModalBody>
     </ModalContent>
   </Modal>
@@ -35,12 +43,20 @@
   [EditorRequired]
   public List<ProjectMenuItem> Items { get; set; } = default!;
 
+  private List<Slide> Slides { get; set; }
+
   private ProjectMenuItem? CurrentItem;
   private Modal modalRef;
 
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    Slides = SlidesHelper.GetSlides();
+  }
+
   private void HandleCardClick(ProjectMenuItem selectedItem) {
     CurrentItem = selectedItem;
-    
+
     modalRef.Show();
   }
 }

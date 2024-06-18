@@ -1,0 +1,96 @@
+﻿@using Web.Models
+
+<div class="relative @(Class)">
+  @if (Sildes != null) {
+    <div style="height:50vh;">
+      <img class="w-full object-cover fade" src="@Sildes[currentSlideIndex].ImageUrl" style="width:100%; height:100%;" />
+    </div>
+
+    <button class="carousel-control left" @onclick="PreviousSlide">&#10094;</button>
+    <button class="carousel-control right" @onclick="NextSlide">&#10095;</button>
+
+    <div class="text-center bg-medium-900 text-white p-1">
+      <p class="text-white">@Sildes[currentSlideIndex].Caption</p>
+    </div>
+
+    <div class="w-full">
+      @foreach (var slide in Sildes.Select((value, index) => new { value, index })) {
+        <img class="thumbnail" src="@slide.value.Thumbnail"
+             @onclick="() => SetCurrentSlide(slide.index)"
+             style="@(currentSlideIndex == slide.index ? "opacity: 1;" : "opacity: .6;")" />
+      }
+    </div>
+  }
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public List<Slide> Sildes { get; set; } = default!;
+
+  private int currentSlideIndex = 0;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    if (Sildes == null || Sildes.Count == 0) {
+      throw new ArgumentException("No slides provided.");
+    }
+  }
+
+  private void NextSlide() {
+    currentSlideIndex = (currentSlideIndex + 1) % Sildes.Count;
+  }
+
+  private void PreviousSlide() {
+    if (currentSlideIndex == 0) {
+      currentSlideIndex = Sildes.Count - 1;
+    } else {
+      currentSlideIndex -= 1;
+    }
+  }
+
+  private void SetCurrentSlide(int index) {
+    currentSlideIndex = index;
+  }
+}
+
+<style scoped>
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    color: white;
+    font-size: 24px;
+    user-select: none;
+    background-color: rgba(128, 128, 128, 0.5);
+    border: none;
+    cursor: pointer;
+  }
+
+    .carousel-control.left {
+      left: 0;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .carousel-control.right {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+  .thumbnail {
+    float: left;
+    width: calc(100% / 6);
+    height: 100px;
+    cursor: pointer;
+    object-fit: cover;
+  }
+</style>
