@@ -9,6 +9,8 @@
                                     OnCardClick="HandleCardClick" />
   }
 
+  @* It's important to aknowledge that if you test the UI you have to test it with real mobile devices (or real simulators),
+     because the browser's responsive design mode is not accurate. *@
   <Modal @ref="modalRef" Class="fixed px-0 w-full h-fit !top-1/2 !left-1/2 !-translate-x-1/2 !-translate-y-1/2">
     <ModalContent Size="ModalSize.ExtraLarge" Centered>
       <ModalHeader>
@@ -17,7 +19,6 @@
       </ModalHeader>
       <ModalBody Class="max-h-[80vh] overflow-auto">
         <div class="flex flex-col-reverse xl:flex-row-reverse justify-around items-center gap-4">
-          @* <img src="https://placehold.co/300" alt="Placeholder image" class="w-full h-auto rounded-xl" /> *@
           <ImageCarosel Class="w-full xl:w-1/2" Slides=@Slides />
 
           <div class="w-full xl:w-1/2 flex flex-col justify-center items-center gap-4 mt-5">
