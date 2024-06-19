@@ -7,28 +7,48 @@
 <PageTitle>Justin Urbanek</PageTitle>
 
 <HeroBanner Title="Justin Urbanek - Ich"
-  Paragraph="Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes."
-  HasButton="true"
-  OnClick=NavigateToAbout
-  IsBigView="true"
-  ButtonText="Mehr über mich" />
+            Paragraphs=paragraphs
+            HasButton="true"
+            OnClick=NavigateToAbout
+            IsBigView="true"
+            ButtonText="Mehr über mich" />
 
-<Catchphrase ImageUrl="./me.png" Text="Lorem Ipsum dolor sit amet" />
+<Catchphrase ImageUrl="./imgs/me.png" Text=@catchphraseText />
 
 <ContentGrid MainTitle="Erfahrung"
-  MainText="Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes."
-  MediaLinkItems="mediaLinkItems" />
+             MainText="Im Laufe meiner Ausbildung und beruflichen Tätigkeit habe ich an einer Vielzahl von Projekten gearbeitet, von Schulprojekten, Arbeitsprojekten, privaten Projekten bis hin Hackathon-Projekten. Meine Markanntesten Projekte sind hier einsehbar."
+             MediaLinkItems="mediaLinkItems" />
 
 @code {
   List<MediaLinkItem> mediaLinkItems;
-  
+  private List<string> paragraphs = [
+    "Willkommen auf meiner persönlichen Webseite! Ich bin Justin Urbanek, ein leidenschaftlicher Informatiklernender im dritten Lehrjahr. Aktuell absolviere ich meine Ausbildung bei der Kauz Informatik Medien AG und besuche das Berufsbildungszentrum BBZW Sursee.",
+  "Aktuell absolviere ich meine Ausbildung bei der Kauz Informatik Medien AG und besuche das Berufsbildungszentrum BBZW Sursee"
+  ];
+  private string catchphraseText;
+  private DateTime birthDate = new DateTime(2004, 12, 17);
+
   protected override void OnInitialized() {
     base.OnInitialized();
 
     mediaLinkItems = MediaLinkItemHelper.GetExperienceContent();
+
+    byte age = CalculateAge(birthDate);
+    catchphraseText = $"{age}-jähriger angehender Entwickler mit einer Leidenschaft für Informatik";
   }
 
   private void NavigateToAbout() {
     NavigationManager.NavigateTo("/about");
+  }
+
+  private byte CalculateAge(DateTime birthDate) {
+    DateTime now = DateTime.Now;
+    byte age = (byte)(now.Year - birthDate.Year);
+
+    if (now.Month < birthDate.Month || (now.Month == birthDate.Month && now.Day < birthDate.Day)) {
+      age--;
+    }
+
+    return age;
   }
 }

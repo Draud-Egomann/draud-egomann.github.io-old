@@ -9,9 +9,11 @@
         @SubTitle
       </Heading>
 
-      <Paragraph Class="max-w-md text-white">
-        @Paragraph
-      </Paragraph>
+      @foreach (var paragraph in Paragraphs) {
+        <Paragraph Class="max-w-md text-white">
+          @paragraph
+        </Paragraph>
+      }
 
       @if (HasButton) {
         <Button Class="flex justify-center !text-2xl !text-white !rounded-full !hover:text-black !hover:bg-white w-64"
@@ -53,7 +55,7 @@
   public string? SubTitle { get; set; }
 
   [Parameter]
-  public string? Paragraph { get; set; }
+  public List<string> Paragraphs { get; set; } = new List<string>();
 
   [Parameter]
   public string? ButtonText { get; set; }
