@@ -6,11 +6,11 @@ public static class CarouselWordHelper
 {
   public static List<CarouselWord> GetCarouselWords() {
     return [
-      new() { Word = "WordPress", ImageUrl = "https://placehold.co/64", AltText = "WordPress Logo", AnimationDelay = 0 },
-      new() { Word = "ASP .NET", ImageUrl = "https://placehold.co/64", AltText = "ASP .NET Logo", AnimationDelay = 0 },
-      new() { Word = "Ionic", ImageUrl = "https://placehold.co/64", AltText = "Ionic Logo", AnimationDelay = 0 },
-      new() { Word = "VueJS", ImageUrl = "https://placehold.co/64", AltText = "VueJS Logo", AnimationDelay = 0 },
-      new() { Word = "NuxtJS", ImageUrl = "https://placehold.co/64", AltText = "NuxtJS Logo", AnimationDelay = 0 }
+      new() { Word = "WordPress", ImageUrl = "./imgs/logos/wordpress.svg", AltText = "WordPress Logo", AnimationDelay = 0 },
+      new() { Word = "ASP .NET", ImageUrl = "./imgs/logos/dotnet.svg", AltText = "ASP .NET Logo", AnimationDelay = 0 },
+      new() { Word = "Ionic", ImageUrl = "./imgs/logos/ionic.svg", AltText = "Ionic Logo", AnimationDelay = 0 },
+      new() { Word = "VueJS", ImageUrl = "./imgs/logos/vue.svg", AltText = "VueJS Logo", AnimationDelay = 0 },
+      new() { Word = "TailwindCSS", ImageUrl = "./imgs/logos/tailwind.svg", AltText = "TailwindCSS Logo", AnimationDelay = 0 },
     ];
   }
 }

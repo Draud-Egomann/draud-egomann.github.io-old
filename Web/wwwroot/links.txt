@@ -1,0 +1,17 @@
+﻿wordpress logo
+https://wordpress.org/about/logos/
+
+vue logo
+https://vuejs.org/
+
+nuxt logo
+https://nuxt.com/
+
+tailwind logo
+https://tailwindcss.com/brand
+
+asp .net
+https://github.com/dotnet/brand/tree/main/logo
+
+ionic logo
+https://ionic.io/about/brand
