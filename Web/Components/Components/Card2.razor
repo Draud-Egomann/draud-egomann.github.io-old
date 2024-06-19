@@ -2,7 +2,7 @@
 @inject IJSRuntime JSRuntime
 
 <Card Class="@(Class)">
-  <CardImage Source=@Card.ImageUrl Alt=@Card.AltText />
+  <CardImage Source=@Card.ImageUrl Alt=@Card.AltText Class="rounded-t-md" />
   <CardBody Class="flex flex-col justify-center items-center gap-8">
     <Button @onclick=ToggleText Color="Color.Primary" Class="w-full flex justify-center text-lg py-4">
       @BtnText
