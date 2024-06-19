@@ -8,12 +8,12 @@ public static class MediaImageHelper
     return [
       new () {
         ImageUrl = "./imgs/hobbies/write.jpg",
-        AltText = "Placeholder",
-        Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        AltText = "Schreiben",
+        Text = ""
       },
       new () {
         ImageUrl = "./imgs/hobbies/program.webp",
-        AltText = "Placeholder",
+        AltText = "Programmieren und Coden",
         Text = ""
       },
       new () {
@@ -23,7 +23,7 @@ public static class MediaImageHelper
       },
       new () {
         ImageUrl = "./imgs/hobbies/read.jpg",
-        AltText = "Placeholder",
+        AltText = "Lesen",
         Text = ""
       },
     ];
