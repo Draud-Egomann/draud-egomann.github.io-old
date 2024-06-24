@@ -14,7 +14,7 @@
 
     <div class="hidden lg:block w-full lg:w-2/3 relative">
       @foreach (var image in Images) {
-        <img src=@image.ImageUrl alt=@image.AltText class="static lg:absolute shadow-gray-800 shadow-md @(image.Position)" />
+        <img src=@image.ImageUrl alt=@image.AltText class="static lg:absolute w-full h-full lg:w-[22rem] lg:h-auto shadow-gray-800 shadow-md @(image.Position)" />
       }
     </div>
 
