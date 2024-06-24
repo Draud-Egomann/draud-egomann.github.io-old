@@ -15,3 +15,9 @@ https://github.com/dotnet/brand/tree/main/logo
 
 ionic logo
 https://ionic.io/about/brand
+
+wolf picture
+https://pixabay.com/de/photos/wolf-eckzahn-wald-raubtier-wild-1336229/
+
+lucerne picture
+https://pixabay.com/de/photos/europa-schweiz-luzern-stadt-7128531/
