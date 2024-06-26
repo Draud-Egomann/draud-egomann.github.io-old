@@ -16,8 +16,20 @@ https://github.com/dotnet/brand/tree/main/logo
 ionic logo
 https://ionic.io/about/brand
 
+lucerne picture
+https://pixabay.com/de/photos/europa-schweiz-luzern-stadt-7128531/
+
+work picture
+https://www.pexels.com/de-de/foto/computer-c-code-276452/
+
+food picture
+https://www.pexels.com/de-de/foto/datei-aparmegiana-20426624/
+
 wolf picture
 https://pixabay.com/de/photos/wolf-eckzahn-wald-raubtier-wild-1336229/
 
-lucerne picture
-https://pixabay.com/de/photos/europa-schweiz-luzern-stadt-7128531/
+winter picture
+https://www.pexels.com/de-de/foto/schneebedeckte-gebirgszuge-unter-dem-weissen-himmel-1398049/
+
+water picture
+https://www.pexels.com/de-de/foto/nahaufnahme-der-flasche-die-wasser-auf-glas-giesst-327090/
