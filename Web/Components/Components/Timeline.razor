@@ -51,8 +51,8 @@
     }
   }
 
-  private string GetContainerClass(int index) => index % 2 == 0 ? "left" : "right";
-  private string GetContentClass(int index) => index % 2 == 0 ? "hover:-translate-x-2 lg:hover:translate-x-2" : "hover:-translate-x-2";
-  private string GetYearContainerClass(int index) => index % 2 == 0 ? "rounded-l-full lg:rounded-l-none lg:rounded-r-full bg-gradient-to-bl lg:bg-gradient-to-br" : "rounded-l-full bg-gradient-to-bl";
-  private string GetDescriptionContainerClass(int index) => index % 2 == 0 ? "mr-2 ml-8 lg:mr-8 lg:ml-2" : "mr-2 ml-8";
+  private string GetContainerClass(byte index) => index % 2 == 0 ? "left" : "right";
+  private string GetContentClass(byte index) => index % 2 == 0 ? "hover:-translate-x-2 lg:hover:translate-x-2" : "hover:-translate-x-2";
+  private string GetYearContainerClass(byte index) => index % 2 == 0 ? "rounded-l-full lg:rounded-l-none lg:rounded-r-full bg-gradient-to-bl lg:bg-gradient-to-br" : "rounded-l-full bg-gradient-to-bl";
+  private string GetDescriptionContainerClass(byte index) => index % 2 == 0 ? "mr-2 ml-8 lg:mr-8 lg:ml-2" : "mr-2 ml-8";
 }
