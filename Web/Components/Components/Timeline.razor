@@ -1,7 +1,7 @@
 ﻿@using Web.Models
 
 <div class="w-full own-bg-primary py-12">
-  <div class="timeline relative container py-24 @(Class)">
+  <div class="timeline relative container overflow-hidden py-24 @(Class)">
     @foreach (var item in TimelineItems) {
       <div class="timeline-container @item.Classes[0]">
         <div class="content duration-500 @item.Classes[1]">
