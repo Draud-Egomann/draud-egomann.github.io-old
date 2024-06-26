@@ -15,6 +15,8 @@
               Paragraph="Ich bin Justin Urbanek und lebe seit 15 Jahren in der malerischen Schweiz. In dieser Zeit habe ich viele wertvolle Erfahrungen gesammelt und mich stetig weiterentwickelt. Derzeit absolviere ich meine Ausbildung bei der Kauz Informatik Medien AG und dem BBZW Sursee, wo ich mich intensiv mit den neuesten Technologien und Medien auseinandersetze. Mein Engagement und meine Lernbereitschaft prägen meinen Weg, und ich freue mich darauf, meine Fähigkeiten weiter auszubauen und neue Herausforderungen anzunehmen."
               Images=@Images /> *@
 
+<FlipCards Cards="FlipCards" />
+
 <TextCarousel Title="Ich verwende"
   CarouselWords=@CarouselWords
   ButtonText="Meine Projekte ansehen"
@@ -25,6 +27,7 @@
 
 @code {
   //private List<HorizontalGalleryImage> Images { get; set; } = default!;
+  private List<FlipCardItem> FlipCards { get; set; } = default!;
   private List<CarouselWord> CarouselWords { get; set; } = default!;
   private List<MediaImage> MediaImages { get; set; } = default!;
 
@@ -32,6 +35,7 @@
     base.OnInitialized();
 
     //Images = HorizontalGalleryImageHelper.GetGalleryImages();
+    FlipCards = FlipCardHelper.GetFlipCards();
     CarouselWords = CarouselWordHelper.GetCarouselWords();
     MediaImages = MediaImageHelper.GetMediaImages();
   }
