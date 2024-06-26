@@ -1,0 +1,26 @@
+﻿@using Web.Models
+
+<div class="w-full relative own-bg-primary @(Class)">
+  <div class="container flex flex-wrap lg:flex-nowrap justify-around items-center gap-8 py-12">
+
+    <div class="w-full flex flex-wrap justify-center gap-4">
+      @foreach (var card in Cards) {
+        <FlipCard Card="card" />
+      }
+    </div>
+
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public List<FlipCardItem> Cards { get; set; } = default!;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+  }
+}
