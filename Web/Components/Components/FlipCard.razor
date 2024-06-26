@@ -1,7 +1,7 @@
 ﻿@using Web.Models
 
-<div class="w-full sm:w-[48%] lg:w-[24%] min-h-52 relative flex flex-wrap items-stretch border-8 border-t-0 border-transparent flip-box @(Class)">
-  <div class="bg-gray-600 z-10 front rounded-xl">
+<div class="w-full sm:w-[48%] xl:w-[24%] min-h-52 relative flex flex-wrap items-stretch border-8 border-t-0 border-transparent flip-box @(Class)">
+  <div class="bg-gray-600 z-10 front rounded-xl p-4 sm:p-0">
     <DisplayHeading Size="DisplayHeadingSize.Is4" Class="content text-black">
       @Card.FrontText
     </DisplayHeading>
@@ -60,6 +60,7 @@
     -webkit-transform: translateZ(50px);
     transform: translateZ(50px);
     text-shadow: 0px 0px 2px black;
+    text-align: center;
   }
 </style>
 
