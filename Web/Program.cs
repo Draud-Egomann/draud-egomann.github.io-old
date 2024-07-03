@@ -9,6 +9,7 @@ using Blazorise.Tailwind;
 using Blazorise.Icons.FontAwesome;
 using Web.Services;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,7 +45,8 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 builder.Services.AddSingleton<CultureService>();
-builder.Services.AddLocalization();
+builder.Services.AddLocalization(options => options.ResourcesPath = "Translations");
+builder.Services.AddScoped<IStringLocalizer<App>, StringLocalizer<App>>();
 
 var localizationOptions = new RequestLocalizationOptions()
     .SetDefaultCulture(CultureService.SupportedCultures[1].ToString())
