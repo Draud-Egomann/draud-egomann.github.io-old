@@ -1,40 +1,42 @@
 ﻿@page "/"
+@using Microsoft.Extensions.Localization
 @using Web.Components.Components
 @using Web.Helper
 @using Web.Models
 @inject NavigationManager NavigationManager
+@inject IStringLocalizer<Home> Localizer
 
 <PageTitle>Justin Urbanek</PageTitle>
 
-<HeroBanner Title="Justin Urbanek - Ich"
+<HeroBanner Title="@Localizer["Me"]"
             Paragraphs=paragraphs
             HasButton="true"
             OnClick=NavigateToAbout
             IsBigView="true"
-            ButtonText="Mehr über mich" />
+            ButtonText="@Localizer["MoreAboutMe"]" />
 
 <Catchphrase ImageUrl="./imgs/me.png" Text=@catchphraseText />
 
-<ContentGrid MainTitle="Erfahrung"
-             MainText="Im Laufe meiner Ausbildung und beruflichen Tätigkeit habe ich an einer Vielzahl von Projekten gearbeitet, von Schulprojekten, Arbeitsprojekten, privaten Projekten bis hin Hackathon-Projekten. Meine Markanntesten Projekte sind hier einsehbar."
+<ContentGrid MainTitle="@Localizer["Experience"]"
+             MainText="@Localizer["ExperienceText"]"
              MediaLinkItems="mediaLinkItems" />
 
 @code {
   List<MediaLinkItem> mediaLinkItems;
-  private List<string> paragraphs = [
-    "Willkommen auf meiner persönlichen Webseite! Ich bin Justin Urbanek, ein leidenschaftlicher Informatiklernender im dritten Lehrjahr. Aktuell absolviere ich meine Ausbildung bei der Kauz Informatik Medien AG und besuche das Berufsbildungszentrum BBZW Sursee.",
-  "Aktuell absolviere ich meine Ausbildung bei der Kauz Informatik Medien AG und besuche das Berufsbildungszentrum BBZW Sursee"
-  ];
   private string catchphraseText;
+  private List<string> paragraphs = new();
   private DateTime birthDate = new DateTime(2004, 12, 17);
 
   protected override void OnInitialized() {
     base.OnInitialized();
 
-    mediaLinkItems = MediaLinkItemHelper.GetExperienceContent();
+    paragraphs.Add(Localizer["MeText1"]);
+    paragraphs.Add(Localizer["MeText2"]);
 
     byte age = CalculateAge(birthDate);
-    catchphraseText = $"{age}-jähriger angehender Entwickler mit einer Leidenschaft für Informatik";
+    catchphraseText = string.Format(Localizer["CatchPhrase"], age);
+    
+    mediaLinkItems = MediaLinkItemHelper.GetExperienceContent();
   }
 
   private void NavigateToAbout() {
