@@ -7,6 +7,8 @@ using Web.Components.Account;
 using Blazorise;
 using Blazorise.Tailwind;
 using Blazorise.Icons.FontAwesome;
+using Web.Services;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +43,19 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+builder.Services.AddSingleton<CultureService>();
+builder.Services.AddLocalization();
+
+var localizationOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture(CultureService.SupportedCultures[1].ToString())
+    .AddSupportedCultures(CultureService.SupportedCultures.Select(c => c.ToString()).ToArray())
+    .AddSupportedUICultures(CultureService.SupportedCultures.Select(c => c.ToString()).ToArray());
+
+builder.Services.Configure<RequestLocalizationOptions>(options => {
+  options.DefaultRequestCulture = new RequestCulture("de-CH");
+  options.SupportedCultures = CultureService.SupportedCultures;
+  options.SupportedUICultures = CultureService.SupportedCultures;
+});
 
 var app = builder.Build();
 
@@ -63,5 +78,8 @@ app.MapRazorComponents<App>()
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
+
+// Use localization
+app.UseRequestLocalization(localizationOptions);
 
 app.Run();

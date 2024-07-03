@@ -1,5 +1,7 @@
-﻿@using Web.Models;
+﻿@using System.Globalization
+@using Web.Models;
 @using Web.Helper;
+@using Web.Services
 @implements IDisposable
 
 @inject NavigationManager NavigationManager
@@ -21,18 +23,16 @@
             </NavLink>
           }
 
-          <Dropdown>
-            <DropdownToggle Class="navbar-btn px-4 py-2 rounded-md">
-              @currentLanguage
-            </DropdownToggle>
-            <DropdownMenu>
-              @foreach (var language in languages) {
-                <DropdownItem>
-                  @language
-                </DropdownItem>
-              }
-            </DropdownMenu>
-          </Dropdown>
+          <Select
+            TValue="string"
+            SelectedValue="@currentLanguage.ToString()"
+            SelectedValueChanged="@OnSelectedValueChanged"
+            Class="!w-20 !inline px-4 py-2 rounded-md navbar-btn"
+          >
+            @foreach (var language in languages) {
+              <SelectItem Value="@language.ToString()">@language.TwoLetterISOLanguageName.ToUpper()</SelectItem>
+            }
+          </Select>
         </div>
 
         <Icon Name="@(!isNavBarOpen ? IconName.Bars : IconName.Times)" Class="text-[1.75rem] sm:text-[2rem] block lg:hidden" @onclick="ToggleNavBar" />
@@ -45,8 +45,8 @@
 @code {
   private string? currentUrl;
   private List<NavLinkView> navLinks;
-  private string currentLanguage = "DE";
-  private string[] languages = new string[] { "DE", "EN" };
+  private CultureInfo currentLanguage;
+  private List<CultureInfo> languages = new();
   private bool isNavBarOpen = false;
 
   protected override void OnInitialized() {
@@ -54,6 +54,11 @@
     NavigationManager.LocationChanged += OnLocationChanged;
 
     navLinks = NavLinkViewHelper.GetNavBarLinks();
+
+    currentLanguage = CultureService.CurrentCulture;
+    languages = CultureService.SupportedCultures;
+
+    CultureService.OnCultureChanged += StateHasChanged;
   }
 
   private void OnLocationChanged(object? sender, LocationChangedEventArgs e) {
@@ -63,10 +68,20 @@
 
   public void Dispose() {
     NavigationManager.LocationChanged -= OnLocationChanged;
+    CultureService.OnCultureChanged -= StateHasChanged;
   }
 
   private void ToggleNavBar() {
     isNavBarOpen = !isNavBarOpen;
+  }
+
+  private Task OnSelectedValueChanged(string value) {
+    var culture = CultureInfo.GetCultureInfo(value);
+
+    CultureService.SetCulture(culture);
+    currentLanguage = culture;
+
+    return Task.CompletedTask;
   }
 }
 

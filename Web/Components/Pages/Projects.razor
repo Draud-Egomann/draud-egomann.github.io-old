@@ -2,6 +2,8 @@
 @using Web.Components.Components;
 @using Web.Models
 @using Web.Helper
+@using System.Globalization
+@using Web.Services
 
 <PageTitle>Justin Urbanek - Projekte</PageTitle>
 
@@ -11,6 +13,11 @@
             IsBigView="false" />
 
 <Cards1 Items=@ProjectMenuItems />
+
+
+<h1>@CultureInfo.CurrentCulture</h1>
+<h1>@CultureService.CurrentCulture</h1>
+
 
 @code {
   private List<ProjectMenuItem> ProjectMenuItems { get; set; } = default!;
