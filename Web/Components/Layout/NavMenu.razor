@@ -1,8 +1,10 @@
 ﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
 @using Web.Models;
-@using Web.Helper;
 @using Web.Services
 @implements IDisposable
+@inject MockData MockData
+@inject IStringLocalizer<NavMenu> Localizer
 
 @inject NavigationManager NavigationManager
 
@@ -10,7 +12,7 @@
   <nav class="w-full sm:fixed z-40 own-bg-primary text-white sm:px-8 shadow-md shadow-gray-800">
     <div class="flex flex-col sm:flex-row justify-between items-center container py-4">
       <p class="inline text-3xl sm:text-4xl font-bold text-white my-4 sm:my-0">
-        Justin Urbanek
+        @myName
       </p>
 
       <div class="flex items-center gap-8">
@@ -44,6 +46,7 @@
 
 @code {
   private string? currentUrl;
+  private string myName;
   private List<NavLinkView> navLinks;
   private CultureInfo currentLanguage;
   private List<CultureInfo> languages = new();
@@ -53,7 +56,10 @@
     currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
     NavigationManager.LocationChanged += OnLocationChanged;
 
-    navLinks = NavLinkViewHelper.GetNavBarLinks();
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    myName = Localizer["MyName"];
+    navLinks = MockData.GetNavBarLinks(Localizer);
 
     currentLanguage = CultureService.CurrentCulture;
     languages = CultureService.SupportedCultures;
@@ -78,6 +84,7 @@
     CultureService.SetCulture(culture);
     currentLanguage = culture;
 
+    NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
     return Task.CompletedTask;
   }
 }
