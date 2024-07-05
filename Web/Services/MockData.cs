@@ -85,30 +85,30 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     },
   ];
 
-  public List<TimelineItem> GetTimelineItems() => [
+  public List<TimelineItem> GetTimelineItems(IStringLocalizer<Experience> Localizer) => [
     new() {
       StartYear = new DateTime(2011, 1, 1),
       EndYear = new DateTime(2020, 6, 27),
       Title = Localizer["TimelineTitle1"],
-      Description = Localizer["TimelineDescription1"]
+      Description = Localizer["TimelineText1"]
     },
     new () {
       StartYear = new DateTime(2020, 8, 19),
       EndYear = new DateTime(2021, 7, 5),
       Title = Localizer["TimelineTitle2"],
-      Description = Localizer["TimelineTitle2"],
+      Description = Localizer["TimelineText2"],
     },
     new() {
       StartYear = new DateTime(2021, 2, 1),
       EndYear = new DateTime(2025, 8, 1),
       Title = Localizer["TimelineTitle3"],
-      Description = Localizer["TimelineTitle3"],
+      Description = Localizer["TimelineText3"],
     },
     new() {
       StartYear = new DateTime(2021, 8, 19),
       EndYear = new DateTime(2025, 7, 5),
       Title = Localizer["TimelineTitle4"],
-      Description = Localizer["TimelineTitle4"]
+      Description = Localizer["TimelineText4"]
     },
   ];
 
