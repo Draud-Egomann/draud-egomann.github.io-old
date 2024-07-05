@@ -4,11 +4,11 @@ namespace Web.Services;
 
 public class CultureService {
   public static List<CultureInfo> SupportedCultures { get; } = [
-    new CultureInfo("en-US"),
-    new CultureInfo("de-CH")
+    new CultureInfo("de-CH"),
+    new CultureInfo("en-US")
   ];
 
-  public static CultureInfo CurrentCulture { get; set; } = SupportedCultures[1];
+  public static CultureInfo CurrentCulture { get; set; } = SupportedCultures[0];
   public static event Action OnCultureChanged;
 
   public static void SetCulture(CultureInfo culture) {
