@@ -1,41 +1,54 @@
 ﻿@page "/"
 @using Microsoft.Extensions.Localization
+@using System.Globalization
 @using Web.Components.Components
 @using Web.Helper
 @using Web.Models
+@using Web.Services
 @inject NavigationManager NavigationManager
 @inject IStringLocalizer<Home> Localizer
 
 <PageTitle>Justin Urbanek</PageTitle>
 
-<HeroBanner Title="@Localizer["Me"]"
-            Paragraphs=paragraphs
+<HeroBanner Title=@title
+            Paragraphs=@paragraphs
             HasButton="true"
             OnClick=NavigateToAbout
             IsBigView="true"
-            ButtonText="@Localizer["MoreAboutMe"]" />
+            ButtonText=@btnText />
 
 <Catchphrase ImageUrl="./imgs/me.png" Text=@catchphraseText />
 
-<ContentGrid MainTitle="@Localizer["Experience"]"
-             MainText="@Localizer["ExperienceText"]"
-             MediaLinkItems="mediaLinkItems" />
+<ContentGrid MainTitle=@contentTitle
+             MainText=@contentText
+             MediaLinkItems=@mediaLinkItems />
 
 @code {
   List<MediaLinkItem> mediaLinkItems;
   private string catchphraseText;
+  private string title;
+  private string btnText;
+  private string contentTitle;
+  private string contentText;
   private List<string> paragraphs = new();
   private DateTime birthDate = new DateTime(2004, 12, 17);
 
   protected override void OnInitialized() {
     base.OnInitialized();
 
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    title = Localizer["Me"];
     paragraphs.Add(Localizer["MeText1"]);
     paragraphs.Add(Localizer["MeText2"]);
+    btnText = Localizer["MoreAboutMe"];
 
     byte age = CalculateAge(birthDate);
     catchphraseText = string.Format(Localizer["CatchPhrase"], age);
-    
+
+    contentTitle = Localizer["Experience"];
+    contentText = Localizer["ExperienceText"];
+
     mediaLinkItems = MediaLinkItemHelper.GetExperienceContent();
   }
 
