@@ -49,7 +49,7 @@ builder.Services.AddLocalization(options => options.ResourcesPath = "Translation
 builder.Services.AddScoped<IStringLocalizer<App>, StringLocalizer<App>>();
 
 var localizationOptions = new RequestLocalizationOptions()
-    .SetDefaultCulture(CultureService.SupportedCultures[1].ToString())
+    .SetDefaultCulture(CultureService.SupportedCultures[0].ToString())
     .AddSupportedCultures(CultureService.SupportedCultures.Select(c => c.ToString()).ToArray())
     .AddSupportedUICultures(CultureService.SupportedCultures.Select(c => c.ToString()).ToArray());
 
