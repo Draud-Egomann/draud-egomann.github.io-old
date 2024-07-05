@@ -1,27 +1,35 @@
 ﻿@page "/about"
+@using Microsoft.Extensions.Localization
 @using Web.Components.Components;
-@using Web.Helper
 @using Web.Models
+@using Web.Services
 @inject NavigationManager NavigationManager
+@inject IStringLocalizer<About> Localizer
+@inject MockData Mockdata
 
-<PageTitle>Justin Urbanek - Über mich</PageTitle>
+<PageTitle>Justin Urbanek - @pageTitle</PageTitle>
 
-<HeroBanner Title="Über mich"
-            SubTitle="Krume Tastatur, krummer Rücken, Krume Finger"
+<HeroBanner Title=@pageTitle
+            SubTitle=@pageSubTitle
             HasButton="false"
             IsBigView="false" />
 
-<FlipCards Cards="FlipCards" />
+<FlipCards Cards=@FlipCards />
 
-<TextCarousel Title="Ich verwende"
-  CarouselWords=@CarouselWords
-  ButtonText="Meine Projekte ansehen"
-  OnClick=NavigateToProjects />
+<TextCarousel Title=@carouselTitle
+              CarouselWords=@CarouselWords
+              ButtonText=@projectButtonText
+              OnClick=NavigateToProjects />
 
-<ContentGrid3 Title="Meine Freizeitaktivitäten"
+<ContentGrid3 Title=@hobbiesTitle
               Images=@MediaImages />
 
 @code {
+  private string pageTitle;
+  private string pageSubTitle;
+  private string carouselTitle;
+  private string projectButtonText;
+  private string hobbiesTitle;
   private List<FlipCardItem> FlipCards { get; set; } = default!;
   private List<CarouselWord> CarouselWords { get; set; } = default!;
   private List<MediaImage> MediaImages { get; set; } = default!;
@@ -29,9 +37,17 @@
   protected override void OnInitialized() {
     base.OnInitialized();
 
-    FlipCards = FlipCardHelper.GetFlipCards();
-    CarouselWords = CarouselWordHelper.GetCarouselWords();
-    MediaImages = MediaImageHelper.GetMediaImages();
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    pageTitle = Localizer["PageTitle"];
+    pageSubTitle = Localizer["PageSubTitle"];
+    carouselTitle = Localizer["I use"];
+    projectButtonText = Localizer["View my projects"];
+    hobbiesTitle = Localizer["HobbiesTitle"];
+
+    FlipCards = Mockdata.GetFlipCards(Localizer);
+    CarouselWords = Mockdata.GetCarouselWords();
+    MediaImages = Mockdata.GetMediaImages(Localizer);
   }
 
   private void NavigateToProjects() {
