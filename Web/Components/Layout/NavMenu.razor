@@ -57,8 +57,6 @@
 
     currentLanguage = CultureService.CurrentCulture;
     languages = CultureService.SupportedCultures;
-
-    CultureService.OnCultureChanged += StateHasChanged;
   }
 
   private void OnLocationChanged(object? sender, LocationChangedEventArgs e) {
@@ -68,7 +66,6 @@
 
   public void Dispose() {
     NavigationManager.LocationChanged -= OnLocationChanged;
-    CultureService.OnCultureChanged -= StateHasChanged;
   }
 
   private void ToggleNavBar() {
