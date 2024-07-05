@@ -1,23 +1,34 @@
 ﻿@page "/experience"
+@using Microsoft.Extensions.Localization
 @using Web.Components.Components;
 @using Web.Models;
 @using Web.Helper
+@using Web.Services
+@inject IStringLocalizer<Experience> Localizer
+@inject MockData Mockdata
 
-<PageTitle>Justin Urbanek - Erfahrung</PageTitle>
+<PageTitle>Justin Urbanek - @pageTitle</PageTitle>
 
-<HeroBanner Title="Meine Erfahrung"
-            SubTitle="Meine bisherigen Stationen und Erfahrungen."
+<HeroBanner Title=@pageTitle
+            SubTitle=@pageSubTitle
             HasButton="false"
             IsBigView="false" />
 
 <Timeline TimelineItems=@TimelineItems />
 
 @code {
+  private string pageTitle;
+  private string pageSubTitle;
   private List<TimelineItem> TimelineItems { get; set; } = default!;
 
   protected override void OnInitialized() {
     base.OnInitialized();
 
-    TimelineItems = TimelineItemHelper.GetTimelineItems();
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    pageTitle = Localizer["PageTitle"];
+    pageSubTitle = Localizer["PageSubTitle"];
+
+    TimelineItems = Mockdata.GetTimelineItems(Localizer);
   }
 }
