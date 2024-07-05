@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Localization;
 using Web.Components.Layout;
+using Web.Components.Pages;
 using Web.Models;
 
 namespace Web.Services;
@@ -22,7 +23,7 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     new() { ImageUrl = "https://placehold.co/386x256", Title = "Experience 4" }
   ];
 
-  public List<FlipCardItem> GetFlipCards() => [
+  public List<FlipCardItem> GetFlipCards(IStringLocalizer<About> Localizer) => [
     new() {
       FrontText = Localizer["AboutMeResidence"],
       BgImage = "./imgs/flipCards/lucerne.jpg"
@@ -53,7 +54,7 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     },
   ];
 
-  public static List<CarouselWord> GetCarouselWords() => [
+  public List<CarouselWord> GetCarouselWords() => [
     new() { Word = "WordPress", ImageUrl = "./imgs/logos/wordpress.svg", AltText = "WordPress Logo", AnimationDelay = 0 },
     new() { Word = "ASP .NET", ImageUrl = "./imgs/logos/dotnet.svg", AltText = "ASP .NET Logo", AnimationDelay = 0 },
     new() { Word = "Ionic", ImageUrl = "./imgs/logos/ionic.svg", AltText = "Ionic Logo", AnimationDelay = 0 },
@@ -61,7 +62,7 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     new() { Word = "TailwindCSS", ImageUrl = "./imgs/logos/tailwind.svg", AltText = "TailwindCSS Logo", AnimationDelay = 0 },
   ];
 
-  public List<MediaImage> GetMediaImages() => [
+  public List<MediaImage> GetMediaImages(IStringLocalizer<About> Localizer) => [
     new () {
       ImageUrl = "./imgs/hobbies/write.jpg",
       AltText = Localizer["HobbiesAltTextWriting"],
