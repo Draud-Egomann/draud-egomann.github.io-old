@@ -1,23 +1,33 @@
 ﻿@page "/contact"
+@using Microsoft.Extensions.Localization
 @using Web.Components.Components;
 @using Web.Models
-@using Web.Helper
+@using Web.Services
+@inject MockData MockData
+@inject IStringLocalizer<Contact> Localizer
 
 <PageTitle>Justin Urbanek - Kontakt</PageTitle>
 
-<HeroBanner Title="Lorem Ipsum dolor"
-            SubTitle="sit amet consectetur adipisici elit..."
+<HeroBanner Title=@Title
+            SubTitle=@SubTitle
             HasButton="false"
             IsBigView="false" />
 
-<Cards2 Class="py-2" Cards=@ContactCards />
+<Cards2 Class="py-16" Cards=@ContactCards />
 
 @code {
+  private string Title { get; set; }
+  private string SubTitle { get; set; }
   private List<ContactCard> ContactCards { get; set; } = default!;
 
   protected override void OnInitialized() {
     base.OnInitialized();
 
-    ContactCards = ContactCardHelper.GetContactCards();
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    Title = Localizer["PageTitle"];
+    SubTitle = Localizer["PageSubTitle"];
+
+    ContactCards = MockData.GetContactCards();
   }
 }
