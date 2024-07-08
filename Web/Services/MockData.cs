@@ -131,14 +131,19 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
 
   public static List<ContactCard> GetContactCards() => [
     new() {
-      ImageUrl = "https://via.placeholder.com/800x300",
-      AltText = "Placeholder image",
-      Text = "This is a placeholder image"
+      ImageUrl = "./imgs/logos/discord-logo-white.svg",
+      AltText = "Discord-Tag",
+      Text = "LoremIpsum#53893"
     },
     new() {
-      ImageUrl = "https://via.placeholder.com/800x300",
-      AltText = "Placeholder image",
-      Text = "This is a placeholder image"
+      ImageUrl = "./imgs/logos/GitHub_Logo_White.png",
+      AltText = "Github",
+      Text = "https://github.com/Egomann88"
+    },
+    new() {
+      ImageUrl = "./imgs/logos/LI-Logo.png",
+      AltText = "Linkedin",
+      Text = "https://www.linkedin.com/in/ju-573795244"
     }
   ];
 }
