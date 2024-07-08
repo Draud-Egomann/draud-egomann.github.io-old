@@ -150,4 +150,51 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
       LinkUrl = "https://www.linkedin.com/in/ju-573795244"
     }
   ];
+
+  public static List<SourceImage> GetSourceImages() => [
+    new () {
+      ImageUrl = "/imgs/flipCards/lucerne.jpg",
+      AltText = "Lucerne from Pixabay",
+      ProfileName = "B. Hochsprung",
+      ProfileUrl = "https://pixabay.com/de/users/bea61-12517357/",
+      SiteName = "Pixabay",
+      SiteUrl = "https://pixabay.com/de/photos/europa-schweiz-luzern-stadt-7128531/"
+    },
+    new () {
+      ImageUrl = "/imgs/flipCards/work.jpg",
+      AltText = "Proamming form Pixabay",
+      SiteName = "Pixabay",
+      SiteUrl = "https://www.pexels.com/de-de/foto/computer-c-code-276452/"
+    },
+    new () {
+      ImageUrl = "/imgs/flipCards/food.jpg",
+      AltText = "Lasagne from Pixabay",
+      ProfileName = "the_food _shot_",
+      ProfileUrl = "https://www.pexels.com/de-de/@the_food-_shot_-445040244/",
+      SiteName = "Pixabay",
+      SiteUrl = "https://www.pexels.com/de-de/foto/datei-aparmegiana-20426624/"
+    },
+    new() {
+      ImageUrl = "/imgs/flipCards/wolf.jpg",
+      AltText = "Wolf from Pixabay",
+      ProfileName = "Andrea Bohl",
+      ProfileUrl = "https://pixabay.com/de/users/wildfaces-932734/",
+      SiteName = "Pixabay",
+      SiteUrl = "https://pixabay.com/de/photos/wolf-eckzahn-wald-raubtier-wild-1336229/"
+    },
+    new() {
+      ImageUrl = "/imgs/flipCards/winter.jpg",
+      AltText = "Winter from Pixabay",
+      ProfileName = "Nathalie De Boever",
+      ProfileUrl = "https://www.pexels.com/de-de/@nathy/",
+      SiteName = "Pixabay",
+      SiteUrl = "https://www.pexels.com/de-de/foto/schneebedeckte-gebirgszuge-unter-dem-weissen-himmel-1398049/"
+    },
+    new() {
+      ImageUrl = "/imgs/flipCards/water.jpg",
+      AltText = "Water from Pixabay",
+      SiteName = "Pixabay",
+      SiteUrl = "https://www.pexels.com/de-de/foto/nahaufnahme-der-flasche-die-wasser-auf-glas-giesst-327090/"
+    }
+  ];
 }
