@@ -138,12 +138,16 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     new() {
       ImageUrl = "./imgs/logos/GitHub_Logo_White.png",
       AltText = "Github",
-      Text = "https://github.com/Egomann88"
+      Text = "Github Profile",
+      IsLink = true,
+      LinkUrl = "https://github.com/Egomann88"
     },
     new() {
       ImageUrl = "./imgs/logos/LI-Logo.png",
       AltText = "Linkedin",
-      Text = "https://www.linkedin.com/in/ju-573795244"
+      Text = "Linkedin",
+      IsLink = true,
+      LinkUrl = "https://www.linkedin.com/in/ju-573795244"
     }
   ];
 }
