@@ -12,8 +12,8 @@
       <div class="flex items-center gap-2 border-2 border-white rounded-md p-4 animate-fade-in">
         <CardTitle Size="5" Class="!m-0 !mx-2 italic">@Card.Text</CardTitle>
 
-        <Button Color="Color.Secondary" Class="p-2" @onclick="CopyText">
-          <Icon Name="IconName.Copy" />
+        <Button Color="Color.Secondary" Class="p-2" @onclick="Card.IsLink ? OpenLink : CopyText">
+          <Icon Name="Card.IsLink ? IconName.Link : IconName.Copy" />
         </Button>
       </div>
     }
@@ -33,6 +33,10 @@
 
   private async Task CopyText() {
     await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", Card.Text);
+  }
+
+  private async Task OpenLink() {
+    await JSRuntime.InvokeVoidAsync("window.open", Card.LinkUrl, "_blank _nofollow");
   }
 
   private void ToggleText() => TextVisible = !TextVisible;
