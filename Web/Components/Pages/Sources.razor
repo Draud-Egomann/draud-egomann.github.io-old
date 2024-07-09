@@ -1,8 +1,10 @@
 ﻿@page "/sources"
+@using Microsoft.Extensions.Localization
 @using Web.Components.Components
 @using Web.Models
 @using Web.Services
 @inject IJSRuntime JSRuntime
+@inject IStringLocalizer<Sources> Localizer
 @inject MockData MockData
 
 <HeroBanner Title=@pageTitle
@@ -27,20 +29,22 @@
   private List<SourceIcon> Icons;
   private List<SourceCard> ContactCards;
   private List<SourceCard> HobbiesCards;
-  private string dividerText = "";
+  private string dividerText;
 
   protected override void OnInitialized() {
     base.OnInitialized();
 
     CultureService.SetCulture(CultureService.CurrentCulture);
 
-    pageTitle = "Quellenverzeichnis";
-    pageSubTitle = "Ja, ich verlinke Quellen!";
+    pageTitle = Localizer["pageTitle"];
+    pageSubTitle = Localizer["pageSubTitle"];
 
     SourceImages = MockData.GetSourceImages();
     Icons = MockData.GetSourceIcons();
     ContactCards = MockData.GetContactSourceCards();
-    HobbiesCards = MockData.GetHobbiesSourceCards();
+    HobbiesCards = MockData.GetHobbiesSourceCards(Localizer);
+
+    dividerText = Localizer["dividerText"];
   }
 
   private async Task NavigateToUrl(string url) {

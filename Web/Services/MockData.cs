@@ -255,32 +255,32 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     }
   ];
 
-  public static List<SourceCard> GetHobbiesSourceCards() => [
+  public List<SourceCard> GetHobbiesSourceCards(IStringLocalizer<Sources> Localizer) => [
     new() {
       ImageUrl = "/imgs/hobbies/gaming.webp",
-      AltText = "Bild von the Witcher 3",
-      Title = "The Witcher 3 Wallpaper",
-      Text = "Ein freies Bild von Luiz Eduardo auf Pinterest.",
+      AltText = "Image from witcher 3",
+      Title = Localizer["HobbySourceCardGamingTitle"],
+      Text = Localizer["HobbySourceCardGamingText"],
       SourceUrl = "https://www.pinterest.com/pin/772226667335267334/"
     },
     new() {
       ImageUrl = "/imgs/hobbies/program.webp",
-      AltText = "KI generiertes Bild über Programmieren",
-      Title = "Mit KI generiert",
-      Text = "Das Bild wurde auf meinen Auftrag von GPT-4 DALL·E generiert.",
+      AltText = "AI generated Image about programming",
+      Title = Localizer["HobbySourceCardAIGenTitle"],
+      Text = Localizer["HobbySourceCardAIGenText"],
     },
     new() {
       ImageUrl = "/imgs/hobbies/read.jpg",
-      AltText = "Bild von einem Buch",
-      Title = "Buchlampe",
-      Text = "Ein freies Bild von jadeharmony1111 auf Pintrest.",
+      AltText = "Image of an open Book",
+      Title = Localizer["HobbySourceCardReadTitle"],
+      Text = Localizer["HobbySourceCardReadText"],
       SourceUrl = "https://www.pinterest.com/pin/641411171899245887/"
     },
     new() {
       ImageUrl = "/imgs/hobbies/write.jpg",
-      AltText = "Bild von einem Notizbuch",
-      Title = "Mit KI generiert",
-      Text = "Das Bild wurde auf meinen Auftrag von GPT-4 DALL·E generiert.",
+      AltText = "Image of a Book",
+      Title = Localizer["HobbySourceCardAIGenTitle"],
+      Text = Localizer["HobbySourceCardAIGenText"],
     }
   ];
 }
