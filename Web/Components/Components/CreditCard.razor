@@ -1,0 +1,31 @@
+﻿@using Web.Models
+
+<Card Class="@("my-8 " + Class)">
+  <CardImage Source="@Card.ImageUrl" Alt="@Card.AltText" Class="@Card.ImageClass"></CardImage>
+  <CardBody>
+    @if (!string.IsNullOrEmpty(Card.Title)) {
+      <CardTitle Size="5">@Card.Title</CardTitle>
+    }
+
+    <CardText>
+      @Card.Text
+    </CardText>
+
+    @if (!string.IsNullOrEmpty(Card.SourceUrl)) {
+      <a href="@Card.SourceUrl" target="_blank" rel="nofollow">
+        <Button Color="Color.Primary">
+          Quelle
+        </Button>
+      </a>
+    }
+  </CardBody>
+</Card>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public SourceCard Card { get; set; } = default!;
+}
