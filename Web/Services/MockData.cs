@@ -197,4 +197,90 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
       SiteUrl = "https://www.pexels.com/de-de/foto/nahaufnahme-der-flasche-die-wasser-auf-glas-giesst-327090/"
     }
   ];
+
+  public static List<SourceIcon> GetSourceIcons() => [
+    new() {
+      ImageUrl = "/imgs/logos/ionic.svg",
+      AltText = "ionic",
+      Description = "Ionic Brand",
+      LinkUrl = "https://ionic.io/about/brand"
+    },
+    new() {
+      ImageUrl = "/imgs/logos/dotnet.svg",
+      AltText = "aspnetcore",
+      Description = "ASP.NET Core Brand",
+      LinkUrl = "https://github.com/dotnet/brand/tree/main/logo"
+    },
+    new() {
+      ImageUrl = "/imgs/logos/tailwind.svg",
+      AltText = "tailwindcss",
+      Description = "Tailwind CSS Brand",
+      LinkUrl = "https://tailwindcss.com/brand"
+    },
+    new() {
+      ImageUrl = "/imgs/logos/vue.svg",
+      AltText = "vuejs",
+      Description = "Vue.js Brand",
+      LinkUrl = "https://vuejs.org/"
+    },
+    new() {
+      ImageUrl = "/imgs/logos/wordpress.svg",
+      AltText = "wordpress",
+      Description = "WordPress Brand",
+      LinkUrl = "https://wordpress.org/about/logos/"
+    }
+  ];
+
+  public static List<SourceCard> GetContactSourceCards() => [
+    new() {
+      ImageUrl = "/imgs/logos/discord-logo-white.svg",
+      AltText = "Discord-Tag",
+      ImageClass = "m-8 h-[85px]",
+      Text = "Discord Brand",
+      SourceUrl = "https://discord.com/branding"
+    },
+    new() {
+      ImageUrl = "/imgs/logos/GitHub_Logo_White.png",
+      AltText = "Github Logo",
+      ImageClass = "m-8",
+      Text = "Github Brand",
+      SourceUrl = "https://github.com/logos"
+    },
+    new() {
+      ImageUrl = "/imgs/logos/LI-Logo.png",
+      AltText = "Linkedin Logo",
+      ImageClass = "m-8",
+      Text = "Linkedin Brand",
+      SourceUrl = "https://brand.linkedin.com/en-us"
+    }
+  ];
+
+  public static List<SourceCard> GetHobbiesSourceCards() => [
+    new() {
+      ImageUrl = "/imgs/hobbies/gaming.webp",
+      AltText = "Bild von the Witcher 3",
+      Title = "The Witcher 3 Wallpaper",
+      Text = "Ein freies Bild von Luiz Eduardo auf Pinterest.",
+      SourceUrl = "https://www.pinterest.com/pin/772226667335267334/"
+    },
+    new() {
+      ImageUrl = "/imgs/hobbies/program.webp",
+      AltText = "KI generiertes Bild über Programmieren",
+      Title = "Mit KI generiert",
+      Text = "Das Bild wurde auf meinen Auftrag von GPT-4 DALL·E generiert.",
+    },
+    new() {
+      ImageUrl = "/imgs/hobbies/read.jpg",
+      AltText = "Bild von einem Buch",
+      Title = "Buchlampe",
+      Text = "Ein freies Bild von jadeharmony1111 auf Pintrest.",
+      SourceUrl = "https://www.pinterest.com/pin/641411171899245887/"
+    },
+    new() {
+      ImageUrl = "/imgs/hobbies/write.jpg",
+      AltText = "Bild von einem Notizbuch",
+      Title = "Mit KI generiert",
+      Text = "Das Bild wurde auf meinen Auftrag von GPT-4 DALL·E generiert.",
+    }
+  ];
 }
