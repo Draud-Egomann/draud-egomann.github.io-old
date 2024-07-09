@@ -1,0 +1,55 @@
+﻿@page "/sources"
+@using Web.Components.Components
+@using Web.Models
+@using Web.Services
+@inject IJSRuntime JSRuntime
+@inject MockData MockData
+
+<HeroBanner Title=@pageTitle
+            SubTitle=@pageSubTitle
+            HasButton="false"
+            IsBigView="false" />
+
+<CreditImages SourceImgs=@SourceImages />
+
+<CreditIcons Icons=@Icons />
+
+<CreditCards Cards=@ContactCards />
+
+<CreditCards Cards=@HobbiesCards />
+
+<div class="w-full relative own-bg-primary">
+  <div class="container flex flex-wrap justify-center items-center gap-8 py-12">
+    <div class="w-1/2 h-1 bg-gradient-to-r from-transparent via-gray-700/80 to-transparent my-2 rounded-xl"></div>
+    <Paragraph Class="text-white w-full text-center">
+      Benutzte nicht aufgelistete Bilder werden entweder noch hinzugefügt oder sind Eigenkreationen.
+    </Paragraph>
+  </div>
+</div>
+
+@code {
+  private string pageTitle;
+  private string pageSubTitle;
+  private List<SourceImage> SourceImages;
+  private List<SourceIcon> Icons;
+  private List<SourceCard> ContactCards;
+  private List<SourceCard> HobbiesCards;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    pageTitle = "Quellenverzeichnis";
+    pageSubTitle = "Ja, ich verlinke Quellen!";
+
+    SourceImages = MockData.GetSourceImages();
+    Icons = MockData.GetSourceIcons();
+    ContactCards = MockData.GetContactSourceCards();
+    HobbiesCards = MockData.GetHobbiesSourceCards();
+  }
+
+  private async Task NavigateToUrl(string url) {
+    await JSRuntime.InvokeVoidAsync("window.open", url, "_blank");
+  }
+}
