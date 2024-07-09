@@ -18,14 +18,7 @@
 
 <CreditCards Cards=@HobbiesCards />
 
-<div class="w-full relative own-bg-primary">
-  <div class="container flex flex-wrap justify-center items-center gap-8 py-12">
-    <div class="w-1/2 h-1 bg-gradient-to-r from-transparent via-gray-700/80 to-transparent my-2 rounded-xl"></div>
-    <Paragraph Class="text-white w-full text-center">
-      Benutzte nicht aufgelistete Bilder werden entweder noch hinzugefügt oder sind Eigenkreationen.
-    </Paragraph>
-  </div>
-</div>
+<DividerText Text=@dividerText />
 
 @code {
   private string pageTitle;
@@ -34,6 +27,7 @@
   private List<SourceIcon> Icons;
   private List<SourceCard> ContactCards;
   private List<SourceCard> HobbiesCards;
+  private string dividerText = "";
 
   protected override void OnInitialized() {
     base.OnInitialized();

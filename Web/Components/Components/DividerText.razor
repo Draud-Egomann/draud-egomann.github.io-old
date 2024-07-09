@@ -1,0 +1,16 @@
+﻿<div class="w-full relative own-bg-primary @(Class)">
+  <div class="container flex flex-wrap justify-center items-center gap-8 py-12">
+    <div class="w-1/2 h-1 bg-gradient-to-r from-transparent via-gray-700/80 to-transparent my-2 rounded-xl"></div>
+    <Paragraph Class="text-white w-full text-center">
+      @Text
+    </Paragraph>
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  public string? Text { get; set; }
+}
