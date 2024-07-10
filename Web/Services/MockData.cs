@@ -7,12 +7,12 @@ using Web.Models;
 namespace Web.Services;
 
 public class MockData {
-  public List<NavLinkView> GetNavBarLinks(IStringLocalizer<NavMenu> Localizer) => [
-    new() { Name = Localizer["HomeLink"], Url = "" },
-    new() { Name = Localizer["AboutMeLink"], Url = "/about" },
-    new() { Name = Localizer["ExperienceLink"], Url = "/experience" },
-    new() { Name = Localizer["ProjectsLink"], Url = "/projects" },
-    new() { Name = Localizer["ContactLink"], Url = "/contact" }
+  public List<string[]> GetNavBarLinks(IStringLocalizer<NavMenu> Localizer) => [
+    [Localizer["HomeLink"], ""],
+    [Localizer["AboutMeLink"], "/about"],
+    [Localizer["ExperienceLink"], "/experience"],
+    [Localizer["ProjectsLink"], "/projects"],
+    [Localizer["ContactLink"], "/contact"]
   ];
 
   public static List<MediaItem> GetExperienceContent() => [
