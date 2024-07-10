@@ -3,7 +3,7 @@
 @using Web.Models;
 @using Web.Services
 @implements IDisposable
-@inject MockData MockData
+@inject DataProvider MockData
 @inject IStringLocalizer<NavMenu> Localizer
 
 @inject NavigationManager NavigationManager
@@ -19,9 +19,9 @@
         <div class="@($"navbar-content " + (isNavBarOpen ? "flex" : "hidden lg:block")) flex-col lg:flex-row">
           @foreach (var navLink in navLinks) {
             <NavLink
-              href="@navLink.Url"
+              href="@navLink[1]"
               class="navbar-btn my-2 lg:my-0 mx-2 px-4 py-2 rounded-md">
-              @navLink.Name
+              @navLink[0]
             </NavLink>
           }
 
@@ -47,7 +47,7 @@
 @code {
   private string? currentUrl;
   private string myName;
-  private List<NavLinkView> navLinks;
+  private List<string[]> navLinks;
   private CultureInfo currentLanguage;
   private List<CultureInfo> languages = new();
   private bool isNavBarOpen = false;

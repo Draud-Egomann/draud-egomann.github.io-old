@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNetCore.Components.Sections
+@using Web.Models
+
+<div class="w-full relative own-bg-primary @(Class)">
+  <div class="container flex flex-wrap justify-center items-center gap-8 py-12">
+    <Heading Size="HeadingSize.Is2" Class="w-full text-white text-center">
+      @Title
+    </Heading>
+
+    <div class="w-full flex flex-wrap justify-center items-center">
+      @foreach (var image in Images) {
+        <div class="w-full sm:w-1/2 xl:w-1/4 p-4">
+          <div class="relative rounded-xl shadow-gray-800 shadow-md hoverable">
+
+            <div class="overlay w-full h-full absolute z-20 flex flex-col justify-center items-center bg-gray-800/60 rounded-xl overflow-auto">
+              <p class="text-xl lg:text-3xl text-center text-white mt-16 mb-8 md:mt-0 md:mb-0 mx-4">
+                @image.Description
+              </p>
+            </div>
+
+            <img src=@image.ImageUrl alt=@image.AltText class="w-full h-auto rounded-xl" />
+
+            <button @onclick="() => ShowModal(image)" class="btn-overlay absolute z-10 left-1/2 top-1/2 p-0">
+              <Icon Name="IconName.ArrowUp"
+                    IconSize="IconSize.x3"
+                    Class="bg-white shadow-gray-600 shadow-md rounded-full py-4 px-5" />
+            </button>
+
+          </div>
+        </div>
+      }
+    </div>
+
+    <Modal @ref="modalRef" Class="fixed w-full sm:w-fit h-fit !top-1/2 !left-1/2 !-translate-x-1/2 !-translate-y-1/2">
+      <ModalContent Centered>
+        <ModalHeader>
+          <ModalTitle>@CurrentImage?.AltText</ModalTitle>
+          <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+          <p class="text-lg sm:text-xl lg:text-3xl text-center text-white">
+            @CurrentImage?.Description
+          </p>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  </div>
+</div>
+
+<style>
+  .overlay, .btn-overlay {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .overlay {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none; /* This ensures that the overlay does not interfere with clicking when invisible */
+  }
+
+  .btn-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  .hoverable:hover .overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Re-enable pointer events when visible */
+  }
+
+  .hoverable:hover .btn-overlay {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 10px));
+  }
+</style>
+
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public string Title { get; set; } = default!;
+
+  [Parameter]
+  [EditorRequired]
+  public List<MediaItem> Images { get; set; } = default!;
+
+  private MediaItem? CurrentImage { get; set; }
+
+  private Modal modalRef;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+  }
+
+  private Task ShowModal(MediaItem image) {
+    CurrentImage = image;
+
+    return modalRef.Show();
+  }
+}

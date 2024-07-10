@@ -1,11 +1,14 @@
 ﻿@page "/about"
 @using Microsoft.Extensions.Localization
-@using Web.Components.Components;
+@using Web.Components.Components
+@using Web.Components.Components.Cards
+@using Web.Components.Components.Texts
+@using Web.Components.Components.Grids
 @using Web.Models
 @using Web.Services
 @inject NavigationManager NavigationManager
 @inject IStringLocalizer<About> Localizer
-@inject MockData Mockdata
+@inject DataProvider DataProvider
 
 <PageTitle>Justin Urbanek - @pageTitle</PageTitle>
 
@@ -32,7 +35,7 @@
   private string hobbiesTitle;
   private List<FlipCardItem> FlipCards { get; set; } = default!;
   private List<CarouselWord> CarouselWords { get; set; } = default!;
-  private List<MediaImage> MediaImages { get; set; } = default!;
+  private List<MediaItem> MediaImages { get; set; } = default!;
 
   protected override void OnInitialized() {
     base.OnInitialized();
@@ -45,9 +48,9 @@
     projectButtonText = Localizer["View my projects"];
     hobbiesTitle = Localizer["HobbiesTitle"];
 
-    FlipCards = Mockdata.GetFlipCards(Localizer);
-    CarouselWords = Mockdata.GetCarouselWords();
-    MediaImages = Mockdata.GetMediaImages(Localizer);
+    FlipCards = DataProvider.GetFlipCards(Localizer);
+    CarouselWords = DataProvider.GetCarouselWords();
+    MediaImages = DataProvider.GetMediaImages(Localizer);
   }
 
   private void NavigateToProjects() {

@@ -1,0 +1,51 @@
+﻿@using Web.Models
+@using Web.Components.Components.Galleries
+
+<div class="w-full relative own-bg-primary @(Class)">
+  <div class="container flex flex-wrap lg:flex-nowrap justify-around items-center gap-8 py-12">
+    <div class="w-full lg:w-1/3 flex flex-col items-center gap-8 mx-8 py-12 lg:py-48 px-0 sm:px-12 lg:px-0">
+      <Heading Size="HeadingSize.Is2" Class="text-white">
+        @Title
+      </Heading>
+
+      <Paragraph Class="text-white">
+        @Paragraph
+      </Paragraph>
+    </div>
+
+    <div class="hidden lg:block w-full lg:w-2/3 relative">
+      @foreach (var item in Items) {
+        <img src=@item.ImageUrl alt=@item.AltText class="static lg:absolute w-full h-full lg:w-[22rem] lg:h-auto shadow-gray-800 shadow-md @(item.Position)" />
+      }
+    </div>
+
+    <HorizontalGallery Class="block lg:hidden"
+                       Items=@Items
+                       GradientColor="#1D2328" />
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public string Title { get; set; } = default!;
+
+  [Parameter]
+  [EditorRequired]
+  public string Paragraph { get; set; } = default!;
+
+  [Parameter]
+  [EditorRequired]
+  public List<HorizontalGalleryItem> Items { get; set; } = default!;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    if (Items.Count < 1 || Items.Count > 3) {
+      throw new ArgumentException("The amount of images must be between 1 and 3.");
+    }
+  }
+}

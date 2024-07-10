@@ -1,9 +1,10 @@
 ﻿@page "/contact"
 @using Microsoft.Extensions.Localization
-@using Web.Components.Components;
+@using Web.Components.Components
+@using Web.Components.Components.Cards
 @using Web.Models
 @using Web.Services
-@inject MockData MockData
+@inject DataProvider DataProvider
 @inject IStringLocalizer<Contact> Localizer
 
 <PageTitle>Justin Urbanek - Kontakt</PageTitle>
@@ -18,7 +19,7 @@
 @code {
   private string Title { get; set; }
   private string SubTitle { get; set; }
-  private List<ContactCard> ContactCards { get; set; } = default!;
+  private List<MediaItem> ContactCards { get; set; } = default!;
 
   protected override void OnInitialized() {
     base.OnInitialized();
@@ -28,6 +29,6 @@
     Title = Localizer["PageTitle"];
     SubTitle = Localizer["PageSubTitle"];
 
-    ContactCards = MockData.GetContactCards();
+    ContactCards = DataProvider.GetContactCards();
   }
 }

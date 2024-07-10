@@ -1,0 +1,58 @@
+﻿@using Web.Models
+
+<div class="w-full relative own-bg-secondary @(Class)">
+  <div class="container flex flex-wrap justify-center items-center gap-8 py-12">
+    <div class="w-full text-white text-center text-5xl font-bold">
+      @Title
+
+      <div class="relative inline-grid grid-cols-1 grid-rows-1 gap-12 overflow-hidden">
+        @foreach (var word in CarouselWords) {
+          <span class="animate-word col-span-full row-span-full flex align-middle justify-center py-4" style="animation-delay: @(word.AnimationDelay)s;">
+            <span class="my-auto">@word.Word</span>
+
+            <img src="@word.ImageUrl" alt="@word.AltText" class="w-16 h-16 ml-4" aria-hidden="true" />
+          </span>
+        }
+      </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(ButtonText)) {
+      <Button Class="flex justify-center !text-2xl !text-white !rounded-full !hover:text-black !hover:bg-white w-64"
+              Size="Size.Large"
+              Color="Color.Secondary"
+              @onclick="OnClick"
+              Outline>
+        @ButtonText
+      </Button>
+    }
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public string Title { get; set; } = default!;
+
+  [Parameter]
+  [EditorRequired]
+  public List<CarouselWord> CarouselWords { get; set; } = default!;
+
+  [Parameter]
+  public EventCallback OnClick { get; set; } = EventCallback.Empty;
+  
+  [Parameter]
+  public string? ButtonText { get; set; }
+
+  private const int AnimationDuration = 10; // duration in seconds
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    for (byte i = 0; i < CarouselWords.Count; i++) {
+      CarouselWords[i].AnimationDelay = -(AnimationDuration / CarouselWords.Count * i);
+    }
+  }
+}

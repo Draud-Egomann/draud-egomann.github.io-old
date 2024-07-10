@@ -1,7 +1,7 @@
 ﻿@page "/projects"
-@using Web.Components.Components;
+@using Web.Components.Components
+@using Web.Components.Components.Cards
 @using Web.Models
-@using Web.Helper
 @using System.Globalization
 @using Web.Services
 
@@ -14,17 +14,12 @@
 
 <Cards1 Items=@ProjectMenuItems />
 
-
-<h1>@CultureInfo.CurrentCulture</h1>
-<h1>@CultureService.CurrentCulture</h1>
-
-
 @code {
   private List<ProjectMenuItem> ProjectMenuItems { get; set; } = default!;
 
   protected override void OnInitialized() {
     base.OnInitialized();
 
-    ProjectMenuItems = ProjectMenuItemHelper.GetProjectMenuItems();
+    ProjectMenuItems = DataProvider.GetProjectMenuItems();
   }
 }

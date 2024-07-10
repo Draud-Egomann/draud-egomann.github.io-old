@@ -1,0 +1,57 @@
+﻿@using Web.Models
+@implements IDisposable;
+
+<div class="w-full h-96 relative own-bg-primary whitespace-nowrap overflow-hidden @(Class)">
+  @foreach (var item in Items) {
+    <div class="inline-block w-full h-96 image" style="transform: translateX(@(item.TranslateX)px);">
+      <img class="w-full h-full object-cover" src=@item.ImageUrl alt=@item.AltText />
+    </div>
+  }
+
+  <div class="w-20 h-full absolute top-0 left-0 bg-gradient-to-r from-[@(GradientColor)] to-transparent"></div>
+  <div class="w-20 h-full absolute top-0 right-0 bg-gradient-to-l from-[@(GradientColor)] to-transparent"></div>
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public List<HorizontalGalleryItem> Items { get; set; } = default!;
+
+  [Parameter]
+  [EditorRequired]
+  public string GradientColor { get; set; } = default!;
+
+  private System.Timers.Timer timer;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    // Set up the timer
+    timer = new System.Timers.Timer(100);
+    timer.Elapsed += UpdateImages;
+    timer.Start();
+  }
+
+  private void UpdateImages(object sender, System.Timers.ElapsedEventArgs e) {
+    InvokeAsync(() => {
+      var containerWidth = 768; // Width of a single card
+
+      foreach (var item in Items) {
+        item.TranslateX -= 2; // Adjust movement speed as needed
+
+        if (item.TranslateX <= (-containerWidth * item.Id) - containerWidth) {
+          item.TranslateX += (containerWidth * Items.Count);
+        }
+      }
+
+      StateHasChanged();
+    });
+  }
+
+  public void Dispose() {
+    timer?.Dispose();
+  }
+}

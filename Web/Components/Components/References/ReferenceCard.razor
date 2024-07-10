@@ -1,0 +1,44 @@
+﻿@using Microsoft.Extensions.Localization
+@using Web.Models
+@using Web.Services
+@inject IStringLocalizer<App> Localizer
+
+<Card Class="@("my-8 " + Class)">
+  <CardImage Source="@Card.ImageUrl" Alt="@Card.AltText" Class="@Card.ImageClass"></CardImage>
+  <CardBody>
+    @if (!string.IsNullOrEmpty(Card.Title)) {
+      <CardTitle Size="5">@Card.Title</CardTitle>
+    }
+
+    <CardText>
+      @Card.Description
+    </CardText>
+
+    @if (Card.HasLink) {
+      <a href="@Card.LinkUrl" target="_blank" rel="nofollow">
+        <Button Color="Color.Primary">
+          @SourceText
+        </Button>
+      </a>
+    }
+  </CardBody>
+</Card>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public MediaItem Card { get; set; } = default!;
+
+  private string SourceText { get; set; } = default!;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    SourceText = Localizer["Source"];
+  }
+}

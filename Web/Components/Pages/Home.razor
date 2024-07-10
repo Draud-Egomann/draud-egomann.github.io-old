@@ -2,7 +2,8 @@
 @using Microsoft.Extensions.Localization
 @using System.Globalization
 @using Web.Components.Components
-@using Web.Helper
+@using Web.Components.Components.Texts
+@using Web.Components.Components.Grids
 @using Web.Models
 @using Web.Services
 @inject NavigationManager NavigationManager
@@ -21,10 +22,10 @@
 
 <ContentGrid MainTitle=@contentTitle
              MainText=@contentText
-             MediaLinkItems=@mediaLinkItems />
+             MediaItems=@mediaItems />
 
 @code {
-  List<MediaLinkItem> mediaLinkItems;
+  List<MediaItem> mediaItems;
   private string catchphraseText;
   private string title;
   private string btnText;
@@ -49,7 +50,7 @@
     contentTitle = Localizer["Experience"];
     contentText = Localizer["ExperienceText"];
 
-    mediaLinkItems = MediaLinkItemHelper.GetExperienceContent();
+    mediaItems = DataProvider.GetExperienceContent();
   }
 
   private void NavigateToAbout() {

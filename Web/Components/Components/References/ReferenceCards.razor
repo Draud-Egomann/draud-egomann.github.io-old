@@ -1,0 +1,22 @@
+﻿@using Web.Models
+
+<div class="w-full relative own-bg-primary">
+  <div class="container flex flex-wrap justify-center items-center gap-8 py-12">
+
+    <CardDeck Class="flex-col md:flex-row">
+      @foreach (var card in Cards) {
+        <ReferenceCard Card=@card />
+      }
+    </CardDeck>
+
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public List<MediaItem> Cards { get; set; } = default!;
+}

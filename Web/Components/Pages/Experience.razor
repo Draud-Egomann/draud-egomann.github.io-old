@@ -1,11 +1,11 @@
 ﻿@page "/experience"
 @using Microsoft.Extensions.Localization
-@using Web.Components.Components;
-@using Web.Models;
-@using Web.Helper
+@using Web.Components.Components
+@using Web.Components.Components.Misc
+@using Web.Models
 @using Web.Services
 @inject IStringLocalizer<Experience> Localizer
-@inject MockData Mockdata
+@inject DataProvider DataProvider
 
 <PageTitle>Justin Urbanek - @pageTitle</PageTitle>
 
@@ -29,6 +29,6 @@
     pageTitle = Localizer["PageTitle"];
     pageSubTitle = Localizer["PageSubTitle"];
 
-    TimelineItems = Mockdata.GetTimelineItems(Localizer);
+    TimelineItems = DataProvider.GetTimelineItems(Localizer);
   }
 }

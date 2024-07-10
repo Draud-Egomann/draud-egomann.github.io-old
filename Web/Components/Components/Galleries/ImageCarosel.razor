@@ -1,0 +1,98 @@
+﻿@using Web.Models
+
+<div class="relative @(Class)">
+  @if (Slides != null) {
+    @* It's important to aknowledge that if you test the UI you have to test it with real mobile devices (or real simulators),
+       because the browser's responsive design mode is not accurate. *@
+    <div>
+      <img class="w-full object-cover" src="@Slides[currentSlideIndex].ImageUrl" />
+    </div>
+
+    <button class="carousel-control left" @onclick="PreviousSlide">&#10094;</button>
+    <button class="carousel-control right" @onclick="NextSlide">&#10095;</button>
+
+    <div class="text-center own-bg-primary text-white p-1">
+      <p class="text-white">@Slides[currentSlideIndex].Description</p>
+    </div>
+
+    <div class="w-full">
+      @foreach (var slide in Slides.Select((value, index) => new { value, index })) {
+        <img class="thumbnail @GetThumbnailWidth(Slides.Count)" src="@slide.value.ThumbnailUrl"
+             @onclick="() => SetCurrentSlide(slide.index)"
+             style="@(currentSlideIndex == slide.index ? "opacity: 1;" : "opacity: .6;")" />
+      }
+    </div>
+  }
+</div>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public List<MediaItem> Slides { get; set; } = default!;
+
+  private int currentSlideIndex = 0;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    if (Slides == null || Slides.Count == 0) {
+      throw new ArgumentException("No slides provided.");
+    }
+  }
+
+  private void NextSlide() {
+    currentSlideIndex = (currentSlideIndex + 1) % Slides.Count;
+  }
+
+  private void PreviousSlide() {
+    if (currentSlideIndex == 0) {
+      currentSlideIndex = Slides.Count - 1;
+    } else {
+      currentSlideIndex -= 1;
+    }
+  }
+
+  private void SetCurrentSlide(int index) {
+    currentSlideIndex = index;
+  }
+
+  private string GetThumbnailWidth(int count) {
+    var percentace = 100 / count;
+
+    return $"w-[{percentace}%]";
+  }
+}
+
+<style scoped>
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    color: white;
+    font-size: 24px;
+    user-select: none;
+    background-color: rgba(128, 128, 128, 0.5);
+    border: none;
+    cursor: pointer;
+  }
+
+    .carousel-control.left {
+      left: 0;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .carousel-control.right {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+  .thumbnail {
+    float: left;
+    height: 100px;
+    cursor: pointer;
+    object-fit: cover;
+    }
+</style>

@@ -1,0 +1,43 @@
+﻿@using Web.Models
+@inject IJSRuntime JSRuntime
+
+<Card Class="@(Class)">
+  <CardImage Source=@Card.ImageUrl Alt=@Card.AltText Class="rounded-t-md w-80 h-28 flex p-4 m-auto" />
+  <CardBody Class="flex flex-col justify-center items-center gap-8">
+    <Button @onclick=ToggleText Color="Color.Primary" Class="w-full flex justify-center text-lg py-4">
+      @BtnText
+    </Button>
+
+    @if (TextVisible) {
+      <div class="flex items-center gap-2 border-2 border-white rounded-md p-4 animate-fade-in">
+        <CardTitle Size="5" Class="!m-0 !mx-2 italic">@Card.Title</CardTitle>
+
+        <Button Color="Color.Secondary" Class="p-2" @onclick="Card.HasLink ? OpenLink : CopyText">
+          <Icon Name="Card.HasLink ? IconName.Link : IconName.Copy" />
+        </Button>
+      </div>
+    }
+  </CardBody>
+</Card>
+
+@code {
+  [Parameter]
+  public string Class { get; set; } = string.Empty;
+
+  [Parameter]
+  [EditorRequired]
+  public MediaItem Card { get; set; } = default!;
+
+  private bool TextVisible { get; set; } = false;
+  private string BtnText => TextVisible ? "Verbergen" : "Zeigen";
+
+  private async Task CopyText() {
+    await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", Card.Title);
+  }
+
+  private async Task OpenLink() {
+    await JSRuntime.InvokeVoidAsync("window.open", Card.LinkUrl, "_blank _nofollow");
+  }
+
+  private void ToggleText() => TextVisible = !TextVisible;
+}
