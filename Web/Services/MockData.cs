@@ -152,7 +152,7 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     }
   ];
 
-  public static List<SourceImage> GetSourceImages() => [
+  public static List<ImageReference> GetRefrenceImages() => [
     new () {
       ImageUrl = "/imgs/flipCards/lucerne.jpg",
       AltText = "Lucerne from Pixabay",
@@ -199,7 +199,7 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     }
   ];
 
-  public static List<SourceIcon> GetSourceIcons() => [
+  public static List<IconReference> GetRefrenceIcons() => [
     new() {
       ImageUrl = "/imgs/logos/ionic.svg",
       AltText = "ionic",
@@ -232,7 +232,7 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     }
   ];
 
-  public static List<SourceCard> GetContactSourceCards() => [
+  public static List<CardReference> GetContactRefrenceCards() => [
     new() {
       ImageUrl = "/imgs/logos/discord-logo-white.svg",
       AltText = "Discord-Tag",
@@ -256,7 +256,7 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     }
   ];
 
-  public List<SourceCard> GetHobbiesSourceCards(IStringLocalizer<References> Localizer) => [
+  public List<CardReference> GetHobbiesRefrenceCards(IStringLocalizer<References> Localizer) => [
     new() {
       ImageUrl = "/imgs/hobbies/gaming.webp",
       AltText = "Image from witcher 3",

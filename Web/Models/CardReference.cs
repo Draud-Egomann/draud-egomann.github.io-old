@@ -1,6 +1,6 @@
 ﻿namespace Web.Models;
 
-public class SourceCard {
+public class CardReference {
   public string ImageUrl { get; set; }
   public string AltText { get; set; } = string.Empty;
   public string? ImageClass { get; set; }
