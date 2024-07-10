@@ -11,11 +11,11 @@
     }
 
     <CardText>
-      @Card.Text
+      @Card.Description
     </CardText>
 
-    @if (!string.IsNullOrEmpty(Card.SourceUrl)) {
-      <a href="@Card.SourceUrl" target="_blank" rel="nofollow">
+    @if (Card.HasLink) {
+      <a href="@Card.LinkUrl" target="_blank" rel="nofollow">
         <Button Color="Color.Primary">
           @SourceText
         </Button>
@@ -30,7 +30,7 @@
 
   [Parameter]
   [EditorRequired]
-  public CardReference Card { get; set; } = default!;
+  public MediaItem Card { get; set; } = default!;
 
   private string SourceText { get; set; } = default!;
 

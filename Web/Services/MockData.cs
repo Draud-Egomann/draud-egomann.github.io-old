@@ -15,11 +15,11 @@ public class MockData {
     new() { Name = Localizer["ContactLink"], Url = "/contact" }
   ];
 
-  public static List<MediaLinkItem> GetExperienceContent() => [
-    new() { ImageUrl = "https://placehold.co/386x256", Title = "Experience 1" },
-    new() { ImageUrl = "https://placehold.co/386x256", Title = "Experience 2" },
-    new() { ImageUrl = "https://placehold.co/386x256", Title = "Experience 3" },
-    new() { ImageUrl = "https://placehold.co/386x256", Title = "Experience 4" }
+  public static List<MediaItem> GetExperienceContent() => [
+    new() { ImageUrl = "https://placehold.co/386x256", AltText = "Placeholder", Title = "Experience 1", LinkUrl = "https://www.example.com/" },
+    new() { ImageUrl = "https://placehold.co/386x256", AltText = "Placeholder", Title = "Experience 2", LinkUrl = "https://www.example.com/" },
+    new() { ImageUrl = "https://placehold.co/386x256", AltText = "Placeholder", Title = "Experience 3", LinkUrl = "https://www.example.com/" },
+    new() { ImageUrl = "https://placehold.co/386x256", AltText = "Placeholder", Title = "Experience 4", LinkUrl = "https://www.example.com/" }
   ];
 
   public List<FlipCardItem> GetFlipCards(IStringLocalizer<About> Localizer) => [
@@ -61,26 +61,26 @@ public class MockData {
     new() { Word = "TailwindCSS", ImageUrl = "./imgs/logos/tailwind.svg", AltText = "TailwindCSS Logo", AnimationDelay = 0 },
   ];
 
-  public List<MediaImage> GetMediaImages(IStringLocalizer<About> Localizer) => [
+  public List<MediaItem> GetMediaImages(IStringLocalizer<About> Localizer) => [
     new () {
       ImageUrl = "./imgs/hobbies/write.jpg",
       AltText = Localizer["HobbiesAltTextWriting"],
-      Text = Localizer["HobbiesTextWriting"]
+      Description = Localizer["HobbiesTextWriting"]
     },
     new () {
       ImageUrl = "./imgs/hobbies/program.webp",
       AltText = Localizer["HobbiesAltTextProgramming"],
-      Text = Localizer["HobbiesTextProgramming"]
+      Description = Localizer["HobbiesTextProgramming"]
     },
     new () {
       ImageUrl = "./imgs/hobbies/gaming.webp",
       AltText = Localizer["HobbiesAltTextGaming"],
-      Text = Localizer["HobbiesTextGaming"]
+      Description = Localizer["HobbiesTextGaming"]
     },
     new () {
       ImageUrl = "./imgs/hobbies/read.jpg",
       AltText = Localizer["HobbiesAltTextReading"],
-      Text = Localizer["HobbiesTextReading"]
+      Description = Localizer["HobbiesTextReading"]
     },
   ];
 
@@ -128,24 +128,22 @@ public class MockData {
     }
   ];
 
-  public static List<ContactCard> GetContactCards() => [
+  public static List<MediaItem> GetContactCards() => [
     new() {
       ImageUrl = "./imgs/logos/discord-logo-white.svg",
       AltText = "Discord-Tag",
-      Text = "LoremIpsum#53893"
+      Title = "LoremIpsum#53893"
     },
     new() {
       ImageUrl = "./imgs/logos/GitHub_Logo_White.png",
       AltText = "Github",
-      Text = "Github Profile",
-      IsLink = true,
+      Title = "Github Profile",
       LinkUrl = "https://github.com/Egomann88"
     },
     new() {
       ImageUrl = "./imgs/logos/LI-Logo.png",
       AltText = "Linkedin",
-      Text = "Linkedin",
-      IsLink = true,
+      Title = "Linkedin",
       LinkUrl = "https://www.linkedin.com/in/ju-573795244"
     }
   ];
@@ -197,7 +195,7 @@ public class MockData {
     }
   ];
 
-  public static List<IconReference> GetRefrenceIcons() => [
+  public static List<MediaItem> GetRefrenceIcons() => [
     new() {
       ImageUrl = "/imgs/logos/ionic.svg",
       AltText = "ionic",
@@ -230,56 +228,56 @@ public class MockData {
     }
   ];
 
-  public static List<CardReference> GetContactRefrenceCards() => [
+  public static List<MediaItem> GetContactRefrenceCards() => [
     new() {
       ImageUrl = "/imgs/logos/discord-logo-white.svg",
       AltText = "Discord-Tag",
       ImageClass = "m-8 h-[85px]",
-      Text = "Discord Brand",
-      SourceUrl = "https://discord.com/branding"
+      Description = "Discord Brand",
+      LinkUrl = "https://discord.com/branding"
     },
     new() {
       ImageUrl = "/imgs/logos/GitHub_Logo_White.png",
       AltText = "Github Logo",
       ImageClass = "m-8",
-      Text = "Github Brand",
-      SourceUrl = "https://github.com/logos"
+      Description = "Github Brand",
+      LinkUrl = "https://github.com/logos"
     },
     new() {
       ImageUrl = "/imgs/logos/LI-Logo.png",
       AltText = "Linkedin Logo",
       ImageClass = "m-8",
-      Text = "Linkedin Brand",
-      SourceUrl = "https://brand.linkedin.com/en-us"
+      Description = "Linkedin Brand",
+      LinkUrl = "https://brand.linkedin.com/en-us"
     }
   ];
 
-  public List<CardReference> GetHobbiesRefrenceCards(IStringLocalizer<References> Localizer) => [
+  public List<MediaItem> GetHobbiesRefrenceCards(IStringLocalizer<References> Localizer) => [
     new() {
       ImageUrl = "/imgs/hobbies/gaming.webp",
       AltText = "Image from witcher 3",
       Title = Localizer["HobbySourceCardGamingTitle"],
-      Text = Localizer["HobbySourceCardGamingText"],
-      SourceUrl = "https://www.pinterest.com/pin/772226667335267334/"
+      Description = Localizer["HobbySourceCardGamingText"],
+      LinkUrl = "https://www.pinterest.com/pin/772226667335267334/"
     },
     new() {
       ImageUrl = "/imgs/hobbies/program.webp",
       AltText = "AI generated Image about programming",
       Title = Localizer["HobbySourceCardAIGenTitle"],
-      Text = Localizer["HobbySourceCardAIGenText"],
+      Description = Localizer["HobbySourceCardAIGenText"],
     },
     new() {
       ImageUrl = "/imgs/hobbies/read.jpg",
       AltText = "Image of an open Book",
       Title = Localizer["HobbySourceCardReadTitle"],
-      Text = Localizer["HobbySourceCardReadText"],
-      SourceUrl = "https://www.pinterest.com/pin/641411171899245887/"
+      Description = Localizer["HobbySourceCardReadText"],
+      LinkUrl = "https://www.pinterest.com/pin/641411171899245887/"
     },
     new() {
       ImageUrl = "/imgs/hobbies/write.jpg",
       AltText = "Image of a Book",
       Title = Localizer["HobbySourceCardAIGenTitle"],
-      Text = Localizer["HobbySourceCardAIGenText"],
+      Description = Localizer["HobbySourceCardAIGenText"],
     }
   ];
 }
