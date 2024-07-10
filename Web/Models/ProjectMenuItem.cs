@@ -6,4 +6,5 @@ public class ProjectMenuItem {
   public bool HasMoreInfo { get; set; } = default!;
   public string? MoreInfoText { get; set; }
   public List<string> Classes { get; set; } = [];
+  public List<MediaItem>? Slides { get; set; }
 }
