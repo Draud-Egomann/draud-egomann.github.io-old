@@ -14,7 +14,7 @@
 
             <div class="overlay w-full h-full absolute z-20 flex flex-col justify-center items-center bg-gray-800/60 rounded-xl overflow-auto">
               <p class="text-xl lg:text-3xl text-center text-white mt-16 mb-8 md:mt-0 md:mb-0 mx-4">
-                @image.Text
+                @image.Description
               </p>
             </div>
 
@@ -39,7 +39,7 @@
         </ModalHeader>
         <ModalBody>
           <p class="text-lg sm:text-xl lg:text-3xl text-center text-white">
-            @CurrentImage?.Text
+            @CurrentImage?.Description
           </p>
         </ModalBody>
       </ModalContent>
@@ -86,9 +86,9 @@
 
   [Parameter]
   [EditorRequired]
-  public List<MediaImage> Images { get; set; } = default!;
+  public List<MediaItem> Images { get; set; } = default!;
 
-  private MediaImage? CurrentImage { get; set; }
+  private MediaItem? CurrentImage { get; set; }
 
   private Modal modalRef;
 
@@ -96,7 +96,7 @@
     base.OnInitialized();
   }
 
-  private Task ShowModal(MediaImage image) {
+  private Task ShowModal(MediaItem image) {
     CurrentImage = image;
 
     return modalRef.Show();
