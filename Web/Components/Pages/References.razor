@@ -7,7 +7,7 @@
 @using Web.Services
 @inject IJSRuntime JSRuntime
 @inject IStringLocalizer<References> Localizer
-@inject MockData MockData
+@inject DataProvider DataProvider
 
 <HeroBanner Title=@pageTitle
             SubTitle=@pageSubTitle
@@ -41,10 +41,10 @@
     pageTitle = Localizer["pageTitle"];
     pageSubTitle = Localizer["pageSubTitle"];
 
-    SourceImages = MockData.GetRefrenceImages();
-    Icons = MockData.GetRefrenceIcons();
-    ContactCards = MockData.GetContactRefrenceCards();
-    HobbiesCards = MockData.GetHobbiesRefrenceCards(Localizer);
+    SourceImages = DataProvider.GetRefrenceImages();
+    Icons = DataProvider.GetRefrenceIcons();
+    ContactCards = DataProvider.GetContactRefrenceCards();
+    HobbiesCards = DataProvider.GetHobbiesRefrenceCards(Localizer);
 
     dividerText = Localizer["dividerText"];
   }

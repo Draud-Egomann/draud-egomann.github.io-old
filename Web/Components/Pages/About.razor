@@ -8,7 +8,7 @@
 @using Web.Services
 @inject NavigationManager NavigationManager
 @inject IStringLocalizer<About> Localizer
-@inject MockData Mockdata
+@inject DataProvider DataProvider
 
 <PageTitle>Justin Urbanek - @pageTitle</PageTitle>
 
@@ -48,9 +48,9 @@
     projectButtonText = Localizer["View my projects"];
     hobbiesTitle = Localizer["HobbiesTitle"];
 
-    FlipCards = Mockdata.GetFlipCards(Localizer);
-    CarouselWords = Mockdata.GetCarouselWords();
-    MediaImages = Mockdata.GetMediaImages(Localizer);
+    FlipCards = DataProvider.GetFlipCards(Localizer);
+    CarouselWords = DataProvider.GetCarouselWords();
+    MediaImages = DataProvider.GetMediaImages(Localizer);
   }
 
   private void NavigateToProjects() {

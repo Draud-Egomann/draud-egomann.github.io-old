@@ -4,7 +4,7 @@
 @using Web.Components.Components.Cards
 @using Web.Models
 @using Web.Services
-@inject MockData MockData
+@inject DataProvider DataProvider
 @inject IStringLocalizer<Contact> Localizer
 
 <PageTitle>Justin Urbanek - Kontakt</PageTitle>
@@ -29,6 +29,6 @@
     Title = Localizer["PageTitle"];
     SubTitle = Localizer["PageSubTitle"];
 
-    ContactCards = MockData.GetContactCards();
+    ContactCards = DataProvider.GetContactCards();
   }
 }

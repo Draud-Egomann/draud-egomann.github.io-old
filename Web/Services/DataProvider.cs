@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.Localization;
-using System.Security.Cryptography.Xml;
 using Web.Components.Layout;
 using Web.Components.Pages;
 using Web.Models;
 
 namespace Web.Services;
 
-public class MockData {
+public class DataProvider {
   public List<string[]> GetNavBarLinks(IStringLocalizer<NavMenu> Localizer) => [
     [Localizer["HomeLink"], ""],
     [Localizer["AboutMeLink"], "/about"],
