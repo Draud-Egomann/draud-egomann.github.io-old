@@ -1,4 +1,5 @@
 ﻿@using Web.Models
+@using Web.Components.Components.Galleries
 
 <div class="w-full relative own-bg-primary @(Class)">
   <div class="container flex flex-wrap lg:flex-nowrap justify-around items-center gap-8 py-12">
@@ -13,13 +14,13 @@
     </div>
 
     <div class="hidden lg:block w-full lg:w-2/3 relative">
-      @foreach (var image in Images) {
-        <img src=@image.ImageUrl alt=@image.AltText class="static lg:absolute w-full h-full lg:w-[22rem] lg:h-auto shadow-gray-800 shadow-md @(image.Position)" />
+      @foreach (var item in Items) {
+        <img src=@item.ImageUrl alt=@item.AltText class="static lg:absolute w-full h-full lg:w-[22rem] lg:h-auto shadow-gray-800 shadow-md @(item.Position)" />
       }
     </div>
 
     <HorizontalGallery Class="block lg:hidden"
-                       Images=@Images
+                       Items=@Items
                        GradientColor="#1D2328" />
   </div>
 </div>
@@ -38,12 +39,12 @@
 
   [Parameter]
   [EditorRequired]
-  public List<HorizontalGalleryImage> Images { get; set; } = default!;
+  public List<HorizontalGalleryItem> Items { get; set; } = default!;
 
   protected override void OnInitialized() {
     base.OnInitialized();
 
-    if (Images.Count < 1 || Images.Count > 3) {
+    if (Items.Count < 1 || Items.Count > 3) {
       throw new ArgumentException("The amount of images must be between 1 and 3.");
     }
   }
