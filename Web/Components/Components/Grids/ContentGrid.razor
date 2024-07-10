@@ -13,8 +13,8 @@
     </div>
 
     <div class="w-full lg:w-3/4 flex flex-wrap justify-center">
-      @foreach (var item in MediaLinkItems) {
-        <div class="@($"w-full sm:w-1/2 p-8 flex justify-center items-center {(MediaLinkItems.IndexOf(item) % 2 == 0 ? "lg:justify-end" : "lg:justify-start")}")">
+      @foreach (var item in MediaItems) {
+        <div class="@($"w-full sm:w-1/2 p-8 flex justify-center items-center {(MediaItems.IndexOf(item) % 2 == 0 ? "lg:justify-end" : "lg:justify-start")}")">
           <div class="relative bg-gray-600 rounded-lg w-full max-w-[368px] h-[256px] overflow-hidden">
             <button class="relative w-full h-full rounded-lg overflow-hidden p-8">
               @* Separate text and image to separate hover effects *@
@@ -46,5 +46,5 @@
 
   [Parameter]
   [EditorRequired]
-  public List<MediaLinkItem> MediaLinkItems { get; set; } = default!;
+  public List<MediaItem> MediaItems { get; set; } = default!;
 }

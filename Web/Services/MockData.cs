@@ -25,31 +25,31 @@ public class MockData {
   public List<FlipCardItem> GetFlipCards(IStringLocalizer<About> Localizer) => [
     new() {
       FrontText = Localizer["AboutMeResidence"],
-      BgImage = "./imgs/flipCards/lucerne.jpg"
+      ImageUrl = "./imgs/flipCards/lucerne.jpg"
     },
     new() {
       FrontText = Localizer["AboutMeWork"],
-      BgImage = "./imgs/flipCards/work.jpg"
+      ImageUrl = "./imgs/flipCards/work.jpg"
     },
     new() {
       FrontText = Localizer["AboutMeColor"],
-      BgImage = "./imgs/flipCards/violet.jpg"
+      ImageUrl = "./imgs/flipCards/violet.jpg"
     },
     new() {
       FrontText = Localizer["AboutMeFood"],
-      BgImage = "./imgs/flipCards/food.jpg"
+      ImageUrl = "./imgs/flipCards/food.jpg"
     },
     new() {
       FrontText = Localizer["AboutMeAnimal"],
-      BgImage = "./imgs/flipCards/wolf.jpg"
+      ImageUrl = "./imgs/flipCards/wolf.jpg"
     },
     new() {
       FrontText = Localizer["AboutMeSeason"],
-      BgImage = "./imgs/flipCards/winter.jpg"
+      ImageUrl = "./imgs/flipCards/winter.jpg"
     },
     new() {
       FrontText = Localizer["AboutMeDrink"],
-      BgImage = "./imgs/flipCards/water.jpg"
+      ImageUrl = "./imgs/flipCards/water.jpg"
     },
   ];
 
