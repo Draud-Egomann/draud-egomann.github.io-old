@@ -5,7 +5,7 @@
 @using Web.Models
 @using Web.Services
 @inject IStringLocalizer<Experience> Localizer
-@inject MockData Mockdata
+@inject DataProvider DataProvider
 
 <PageTitle>Justin Urbanek - @pageTitle</PageTitle>
 
@@ -29,6 +29,6 @@
     pageTitle = Localizer["PageTitle"];
     pageSubTitle = Localizer["PageSubTitle"];
 
-    TimelineItems = Mockdata.GetTimelineItems(Localizer);
+    TimelineItems = DataProvider.GetTimelineItems(Localizer);
   }
 }

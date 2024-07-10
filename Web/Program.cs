@@ -47,7 +47,7 @@ builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSe
 builder.Services.AddSingleton<CultureService>();
 builder.Services.AddLocalization(options => options.ResourcesPath = "Translations");
 builder.Services.AddScoped<IStringLocalizer<App>, StringLocalizer<App>>();
-builder.Services.AddScoped<MockData>();
+builder.Services.AddScoped<DataProvider>();
 
 var localizationOptions = new RequestLocalizationOptions()
     .SetDefaultCulture(CultureService.SupportedCultures[0].ToString())
