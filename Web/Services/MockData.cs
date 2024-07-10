@@ -6,9 +6,7 @@ using Web.Models;
 
 namespace Web.Services;
 
-public class MockData(IStringLocalizer<NavMenu> localizer) {
-  private IStringLocalizer<NavMenu> Localizer { get; } = localizer;
-
+public class MockData {
   public List<NavLinkView> GetNavBarLinks(IStringLocalizer<NavMenu> Localizer) => [
     new() { Name = Localizer["HomeLink"], Url = "" },
     new() { Name = Localizer["AboutMeLink"], Url = "/about" },
