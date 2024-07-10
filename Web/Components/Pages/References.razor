@@ -14,23 +14,23 @@
             HasButton="false"
             IsBigView="false" />
 
-<CreditImages SourceImgs=@SourceImages />
+<ReferenceImages SourceImgs=@SourceImages />
 
-<CreditIcons Icons=@Icons />
+<ReferenceIcons Icons=@Icons />
 
-<CreditCards Cards=@ContactCards />
+<ReferenceCards Cards=@ContactCards />
 
-<CreditCards Cards=@HobbiesCards />
+<ReferenceCards Cards=@HobbiesCards />
 
 <DividerText Text=@dividerText />
 
 @code {
   private string pageTitle;
   private string pageSubTitle;
-  private List<SourceImage> SourceImages;
-  private List<SourceIcon> Icons;
-  private List<SourceCard> ContactCards;
-  private List<SourceCard> HobbiesCards;
+  private List<ImageReference> SourceImages;
+  private List<IconReference> Icons;
+  private List<CardReference> ContactCards;
+  private List<CardReference> HobbiesCards;
   private string dividerText;
 
   protected override void OnInitialized() {
@@ -41,10 +41,10 @@
     pageTitle = Localizer["pageTitle"];
     pageSubTitle = Localizer["pageSubTitle"];
 
-    SourceImages = MockData.GetSourceImages();
-    Icons = MockData.GetSourceIcons();
-    ContactCards = MockData.GetContactSourceCards();
-    HobbiesCards = MockData.GetHobbiesSourceCards(Localizer);
+    SourceImages = MockData.GetRefrenceImages();
+    Icons = MockData.GetRefrenceIcons();
+    ContactCards = MockData.GetContactRefrenceCards();
+    HobbiesCards = MockData.GetHobbiesRefrenceCards(Localizer);
 
     dividerText = Localizer["dividerText"];
   }

@@ -5,7 +5,7 @@
 
     <CardDeck Class="flex-col md:flex-row">
       @foreach (var card in Cards) {
-        <CreditCard Card=@card />
+        <ReferenceCard Card=@card />
       }
     </CardDeck>
 
@@ -18,5 +18,5 @@
 
   [Parameter]
   [EditorRequired]
-  public List<SourceCard> Cards { get; set; } = default!;
+  public List<CardReference> Cards { get; set; } = default!;
 }
