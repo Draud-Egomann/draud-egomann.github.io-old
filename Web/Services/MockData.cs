@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Localization;
+using System.Security.Cryptography.Xml;
 using Web.Components.Layout;
 using Web.Components.Pages;
 using Web.Models;
@@ -255,7 +256,7 @@ public class MockData(IStringLocalizer<NavMenu> localizer) {
     }
   ];
 
-  public List<SourceCard> GetHobbiesSourceCards(IStringLocalizer<Sources> Localizer) => [
+  public List<SourceCard> GetHobbiesSourceCards(IStringLocalizer<References> Localizer) => [
     new() {
       ImageUrl = "/imgs/hobbies/gaming.webp",
       AltText = "Image from witcher 3",
