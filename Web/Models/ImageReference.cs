@@ -1,6 +1,6 @@
 ﻿namespace Web.Models;
 
-public class ImageReference : ImageItem {
+public class ImageReference : ImageBaseItem {
   public string? ProfileName { get; set; }
   public string? ProfileUrl { get; set; }
   public string SiteName { get; set; }
