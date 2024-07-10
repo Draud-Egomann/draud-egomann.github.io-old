@@ -2,9 +2,9 @@
 @implements IDisposable;
 
 <div class="w-full h-96 relative own-bg-primary whitespace-nowrap overflow-hidden @(Class)">
-  @foreach (var image in Images) {
-    <div class="inline-block w-full h-96 image" style="transform: translateX(@(image.TranslateX)px);">
-      <img class="w-full h-full object-cover" src=@image.ImageUrl alt=@image.AltText />
+  @foreach (var item in Items) {
+    <div class="inline-block w-full h-96 image" style="transform: translateX(@(item.TranslateX)px);">
+      <img class="w-full h-full object-cover" src=@item.ImageUrl alt=@item.AltText />
     </div>
   }
 
@@ -39,11 +39,11 @@
     InvokeAsync(() => {
       var containerWidth = 768; // Width of a single card
 
-      foreach (var image in Images) {
-        image.TranslateX -= 2; // Adjust movement speed as needed
+      foreach (var item in Items) {
+        item.TranslateX -= 2; // Adjust movement speed as needed
 
-        if (image.TranslateX <= (-containerWidth * image.Id) - containerWidth) {
-          image.TranslateX += (containerWidth * Images.Count);
+        if (item.TranslateX <= (-containerWidth * item.Id) - containerWidth) {
+          item.TranslateX += (containerWidth * Items.Count);
         }
       }
 

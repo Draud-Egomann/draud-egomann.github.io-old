@@ -117,14 +117,31 @@ public class MockData {
       Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.",
       HasMoreInfo = true,
       MoreInfoText = "More Info",
-      Classes = []
+      Classes = [],
+      Slides = GetProjectImages()
     },
     new() {
       Title = "Project 2",
       Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae sunt a te dicta? Refert tamen, quo modo.",
       HasMoreInfo = true,
       MoreInfoText = "More Info",
-      Classes = []
+      Classes = [],
+      Slides = GetProjectImages()
+    }
+  ];
+
+  public static List<MediaItem> GetProjectImages() => [
+    new() {
+      ImageUrl = "https://placehold.co/512x512",
+      ThumbnailUrl = "https://placehold.co/256x64",
+      AltText = "Image 1",
+      Description = "Caption for image 1"
+    },
+    new() {
+      ImageUrl = "https://placehold.co/512x512",
+      ThumbnailUrl = "https://placehold.co/256x64",
+      AltText = "Image 1",
+      Description = "Caption for image 1"
     }
   ];
 

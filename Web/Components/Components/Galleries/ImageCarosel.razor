@@ -12,12 +12,12 @@
     <button class="carousel-control right" @onclick="NextSlide">&#10095;</button>
 
     <div class="text-center own-bg-primary text-white p-1">
-      <p class="text-white">@Slides[currentSlideIndex].Caption</p>
+      <p class="text-white">@Slides[currentSlideIndex].Description</p>
     </div>
 
     <div class="w-full">
       @foreach (var slide in Slides.Select((value, index) => new { value, index })) {
-        <img class="thumbnail @GetThumbnailWidth(Slides.Count)" src="@slide.value.Thumbnail"
+        <img class="thumbnail @GetThumbnailWidth(Slides.Count)" src="@slide.value.ThumbnailUrl"
              @onclick="() => SetCurrentSlide(slide.index)"
              style="@(currentSlideIndex == slide.index ? "opacity: 1;" : "opacity: .6;")" />
       }
@@ -31,7 +31,7 @@
 
   [Parameter]
   [EditorRequired]
-  public List<Slide> Slides { get; set; } = default!;
+  public List<MediaItem> Slides { get; set; } = default!;
 
   private int currentSlideIndex = 0;
 
