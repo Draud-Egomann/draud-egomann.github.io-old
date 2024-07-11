@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Canceled" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
   <data name="HideText" xml:space="preserve">
     <value>Hide</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="OnHold" xml:space="preserve">
+    <value>On Hold</value>
   </data>
   <data name="picFromUser" xml:space="preserve">
     <value>Image by</value>
@@ -131,5 +146,14 @@
   </data>
   <data name="Source" xml:space="preserve">
     <value>Source</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="ViewSourceCode" xml:space="preserve">
+    <value>Link to Source Code</value>
+  </data>
+  <data name="VisitSite" xml:space="preserve">
+    <value>Visit Site</value>
   </data>
 </root>

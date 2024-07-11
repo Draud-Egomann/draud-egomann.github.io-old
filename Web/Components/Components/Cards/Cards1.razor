@@ -1,6 +1,9 @@
-﻿@using Web.Components.Components.Galleries
+﻿@using Microsoft.Extensions.Localization
+@using Web.Components.Components.Galleries
 @using Web.Components.Enums
 @using Web.Models
+@using Web.Services
+@inject IStringLocalizer<App> Localizer
 
 <div class="flex flex-wrap justify-around items-center own-bg-primary gap-32 lg:gap-16 py-24 overflow-hidden @(Class)">
   @for (int i = 0; i < Items.Count; i++) {
@@ -38,22 +41,22 @@
             <div class="w-full flex justify-center gap-4">
               @if (!string.IsNullOrEmpty(CurrentItem?.LinkToLiveSite)) {
                 <Button Color="Color.Info" Type="ButtonType.Link" To="@CurrentItem?.LinkToLiveSite" Target="Target.Blank" rel="nofollow" Outline>
-                  Seite besuchen
+                  @visitSite
                   <Icon Name="IconName.ExternalLinkSquareAlt" Class="ml-2" />
                 </Button>
               }
 
               @if (!string.IsNullOrEmpty(CurrentItem?.LinkToSourceCode)) {
                 <Button Color="Color.Info" Type="ButtonType.Link" To="@CurrentItem?.LinkToSourceCode" Target="Target.Blank" rel="nofollow" Outline>
-                  Source Code ansehen
+                  @viewSourceCode
                   <Icon Name="IconName.ExternalLinkSquareAlt" Class="ml-2" />
                 </Button>
               } else if (CurrentItem?.LinkToSourceCodes?.Count > 0) {
                 <div class="flex flex-wrap justify-center items-center">
-                  
+
                   @foreach (var item in CurrentItem.LinkToSourceCodes.Select((link, index) => new { link, index })) {
                     <Button Class="w-1/3 m-4" Color="Color.Info" Type="ButtonType.Link" To="@item.link" Target="Target.Blank" rel="nofollow" Outline>
-                      @(item.index + 1 + ".") Source Code ansehen
+                      @(item.index + 1 + ".") @viewSourceCode
                       <Icon Name="IconName.ExternalLinkSquareAlt" Class="ml-2" />
                     </Button>
                   }
@@ -76,12 +79,19 @@
   [EditorRequired]
   public List<ProjectMenuItem> Items { get; set; } = default!;
 
+  private string visitSite;
+  private string viewSourceCode;
   private ProjectMenuItem? CurrentItem;
   private Modal modalRef;
   private (Color, string) badgeColor => GetBadgeColor(CurrentItem?.Status ?? ProjectStatus.Unknown);
 
   protected override void OnInitialized() {
     base.OnInitialized();
+
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    visitSite = Localizer["VisitSite"];
+    viewSourceCode = Localizer["ViewSourceCode"];
   }
 
   private void HandleCardClick(ProjectMenuItem selectedItem) {
@@ -92,12 +102,12 @@
 
   private (Color, string) GetBadgeColor(ProjectStatus status) {
     return status switch {
-      ProjectStatus.Unknown => (Color.Secondary, "Unbekannt"),
-      ProjectStatus.InProgress => (Color.Info, "In Bearbeitung"),
-      ProjectStatus.Completed => (Color.Success, "Abgeschlossen"),
-      ProjectStatus.Canceled => (Color.Danger, "Abgebrochen"),
-      ProjectStatus.OnHold => (Color.Primary, "Pausiert"),
-      _ => (Color.Secondary, "Unbekannt")
+      ProjectStatus.Unknown => (Color.Secondary, Localizer["Unknown"]),
+      ProjectStatus.InProgress => (Color.Info, Localizer["InProgress"]),
+      ProjectStatus.Completed => (Color.Success, Localizer["Completed"]),
+      ProjectStatus.Canceled => (Color.Danger, Localizer["Canceled"]),
+      ProjectStatus.OnHold => (Color.Primary, Localizer["OnHold"]),
+      _ => (Color.Secondary, Localizer["Unknown"])
     };
   }
 }

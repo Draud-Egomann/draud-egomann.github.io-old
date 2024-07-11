@@ -1,4 +1,7 @@
-﻿@using Web.Models
+﻿@using Microsoft.Extensions.Localization
+@using Web.Models
+@using Web.Services
+@inject IStringLocalizer<App> Localizer
 
 
 <div class="relative @(Class)">
@@ -16,7 +19,7 @@
 
       @if (Item.HasMoreInfo) {
         <Button @onclick="CardButtonClicked" Size="Size.Large" Class="@Item.Classes[1]">
-          Mehr erfahren
+          @learnMore
         </Button>
       }
 
@@ -69,6 +72,8 @@
   [Parameter]
   public EventCallback<ProjectMenuItem> OnCardClick { get; set; }
 
+  private string learnMore;
+
   protected override void OnInitialized() {
     base.OnInitialized();
 
@@ -85,6 +90,10 @@
       BtnColor(Index),
       CardBgBg(Index),
     };
+
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    learnMore = Localizer["LearnMore"];
   }
 
   private string CardBg(int index) => index % 2 == 0 ? "from-[#FD2C4D] to-[#FD2C4D50]" : "from-[#0E274C] to-[#0E274C50]";

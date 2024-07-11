@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PageSubTitle" xml:space="preserve">
+    <value>Milestones and Creative Achievements</value>
+  </data>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Notable Projects</value>
+  </data>
+  <data name="KauzWebsiteTitle" xml:space="preserve">
+    <value>Kauz Website</value>
+  </data>
+  <data name="KauzWebsiteDescription" xml:space="preserve">
+    <value>The Kauz Website was a project to redesign the website of Kauz Informatik Medien AG. I helped with the implementation of the design.</value>
+  </data>
+  <data name="KauzWebsiteMoreInfoText" xml:space="preserve">
+    <value>This was an internal project and my tasks included implementing design elements. I had the freedom to design the elements as long as usability, functionality, and basic requirements were ensured.</value>
+  </data>
+  <data name="MagicalImageryDescription" xml:space="preserve">
+    <value>Magical Imagery was a pilot project as part of a module in my apprenticeship and was meant to simulate how to plan and implement a real project. It is an online shop for photography and art, aimed at creating a simple platform for artists to sell their works.</value>
+  </data>
+  <data name="MagicalImageryMoreInfoText" xml:space="preserve">
+    <value>An online shop that should meet both private and business needs. The challenge was to create a simple and intuitive user interface that is easy to use for both artists and customers. The motivation for this idea was to make life easier for artists and allow them to sell their works on our platform without the legal hurdles of their own shop. We also wanted to provide freedom for AI-generated artworks.</value>
+  </data>
+  <data name="MagicalImagerySlide1Description" xml:space="preserve">
+    <value>Index Page</value>
+  </data>
+  <data name="MagicalImagerySlide2Description" xml:space="preserve">
+    <value>Detailed View</value>
+  </data>
+  <data name="MagicalImagerySlide3Description" xml:space="preserve">
+    <value>License Models</value>
+  </data>
+  <data name="MagicalImagerySlide4Description" xml:space="preserve">
+    <value>Shopping Cart</value>
+  </data>
+  <data name="MagicalImagerySlide5Description" xml:space="preserve">
+    <value>Create Product</value>
+  </data>
+  <data name="MagicalImageryTitle" xml:space="preserve">
+    <value>Magical Imagery</value>
+  </data>
+  <data name="SlideAltText" xml:space="preserve">
+    <value>Project Image</value>
+  </data>
+  <data name="BlazorTemplatesTitle" xml:space="preserve">
+    <value>Blazor Templates</value>
+  </data>
+  <data name="BlazorTemplatesDescription" xml:space="preserve">
+    <value>The Blazor Templates are a small collection of templates for Blazor web projects. They are intended for developers looking for a quick and easy template for their projects.</value>
+  </data>
+  <data name="BlazorTemplatesMoreInfoText" xml:space="preserve">
+    <value>All Blazor templates consist of the same structure, which separates the database logic and the user interface; written as a Blazor web app. Currently, there are 4 templates: a standard Blazor web app, the standard one with Radzen as a UI library, and two more standard ones with Blazorise as a UI library; one with TailwindCSS and the other with Bootstrap.</value>
+  </data>
+  <data name="HackathonTitle" xml:space="preserve">
+    <value>Hackathon</value>
+  </data>
+  <data name="HackathonMoreInfoText" xml:space="preserve">
+    <value>The actual implementation was rather poor; it was our first attempt to develop a web app. In the end, we developed and presented a simple web app with VueJs as the frontend and .Net as the REST API. Not much came of it, but it was an interesting experience.</value>
+  </data>
+  <data name="HackathonSlide1Description" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="HackathonSlide2Description" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="HackathonSlide3Description" xml:space="preserve">
+    <value>Requested Vacations</value>
+  </data>
+  <data name="ScavengerHuntTitle" xml:space="preserve">
+    <value>Scavenger-Hunt-Ionic-App</value>
+  </data>
+  <data name="ScavengerHuntDescription" xml:space="preserve">
+    <value>As the name suggests, the Scavenger Hunt is a scavenger hunt app. This small app was developed by me and two colleagues as part of a Inter-company vocational training course.</value>
+  </data>
+  <data name="ScavengerHuntMoreInfoText" xml:space="preserve">
+    <value>The app is written in Ionic and Angular. In the app, you can do scavenger hunts with a total of 6 tasks, where potatoes are distributed if you spend too much time on a task. All scavenger hunts can be viewed in a leaderboard. The data is stored in the local storage of the device, and during the course, the players' performance was stored in a Google spreadsheet. The source code is currently not publicly available.</value>
+  </data>
+  <data name="ScavengerHuntSlide1Description" xml:space="preserve">
+    <value>Home and Leaderboard</value>
+  </data>
+  <data name="ScavengerHuntSlide2Description" xml:space="preserve">
+    <value>Task 1: Sensor</value>
+  </data>
+  <data name="ScavengerHuntSlide3Description" xml:space="preserve">
+    <value>Task 2: Running</value>
+  </data>
+  <data name="ScavengerHuntSlide4Description" xml:space="preserve">
+    <value>Task 4: Shaking or Turning</value>
+  </data>
+  <data name="ScavengerHuntSlide5Description" xml:space="preserve">
+    <value>End and Evaluation</value>
+  </data>
+  <data name="WordHeaderReplacerTitle" xml:space="preserve">
+    <value>Powershell Word-Header replacer</value>
+  </data>
+  <data name="WordHeaderReplacerDescription" xml:space="preserve">
+    <value>The Powershell Word-Header replacer is a small script that a colleague and I developed in our first year of our apprenticeship within 3 days. The goal of the script was to replace the headers and footers of Word documents with those of another.</value>
+  </data>
+  <data name="WordHeaderReplacerMoreInfoText" xml:space="preserve">
+    <value>A teacher asked us if we could develop such a script because they needed it for work, and PowerShell was specified as the language. The script uses the built-in Word API from Microsoft and can replace the headers and footers of Word documents, but unfortunately, it doesn't always work. I have made many attempts to improve the script over the years, but none have been crowned with success.</value>
+  </data>
+  <data name="MongoPythonTitle" xml:space="preserve">
+    <value>Mongo Python</value>
+  </data>
+  <data name="MongoPythonDescription" xml:space="preserve">
+    <value>Mongo Python is actually called Jukebox and is a final project of a module, developed by a colleague and myself. It is a small web app that can play music and store the music in a MongoDB.</value>
+  </data>
+  <data name="MongoPythonMoreInfoText" xml:space="preserve">
+    <value>The goal of the project was to develop a web app that can play music, save it in playlists, and store the music in a MongoDB. The web app should also have a user interface to manage the music. The project was implemented with VueJs as the frontend and Python as the backend. The database runs in a Docker-Container.</value>
+  </data>
+  <data name="HackathonDescription" xml:space="preserve">
+    <value>In 2022, three colleageus and myself participated in the Young Talents Hackathon, organized by UMB AG and ICT-Berufsbildung Zentralschweiz. We were supposed to develop a vacation planner for the employees of HSLU.</value>
+  </data>
+</root>

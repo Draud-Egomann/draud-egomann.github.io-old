@@ -111,77 +111,77 @@ public class DataProvider {
     },
   ];
 
-  public static List<ProjectMenuItem> GetProjectMenuItems() => [
+  public static List<ProjectMenuItem> GetProjectMenuItems(IStringLocalizer<Projects> Localizer) => [
     new() {
-      Title = "Kauz Website",
-      Description = "Die Kauz Website war ein Projekt zur Neugestaltung der Website der Kauz Informatik Medien AG. Ich habe unter anderem bei der Umsetzung des Designs geholfen.",
-      MoreInfoText = "Dies war ein internes Projekt und zu meinen Aufgaben gehörte es, Gestaltungselemente umzusetzen, dabei war ich frei wie die Elemente aussehen sollten, solange Benutzerfreundlichkeit, Funktionalität und die Grundanforderungen gewährleistet waren. Der Source-Code, sowie genaue Details sind nicht öffentlich verfügbar.",
+      Title = Localizer["KauzWebsiteTitle"],
+      Description = Localizer["KauzWebsiteDescription"],
+      MoreInfoText = Localizer["KauzWebsiteMoreInfoText"],
       Status = ProjectStatus.Completed,
       LinkToLiveSite = "https://kauz.ch",
       Slides = [
         new () {
           ImageUrl = "./imgs/projects/kimWebsite/img1.jpg",
           ThumbnailUrl = "./imgs/projects/kimWebsite/img1.jpg",
-          AltText = "Projektbild",
+          AltText = Localizer["SlideAltText"],
           Description = string.Empty
         },
         new () {
           ImageUrl = "./imgs/projects/kimWebsite/img2.jpg",
           ThumbnailUrl = "./imgs/projects/kimWebsite/img2.jpg",
-          AltText = "Projektbild",
+          AltText = Localizer["SlideAltText"],
           Description = string.Empty
         },
         new () {
           ImageUrl = "./imgs/projects/kimWebsite/img3.jpg",
           ThumbnailUrl = "./imgs/projects/kimWebsite/img3.jpg",
-          AltText = "Projektbild",
+          AltText = Localizer["SlideAltText"],
           Description = string.Empty
         }
       ]
     },
     new() {
-      Title = "Magical Imagery",
-      Description = "Magical Imagery war ein Pilotprojekt im Rahmen eines Modules in meiner Ausbildung. Es ist ein Webshop für Fotografie und Kunst, dessen Zielgebung es war, eine einfache Plattform für Künstler zu schaffen, um ihre Werke zu verkaufen.",
-      MoreInfoText = "Ein Webshop der sowohl privaten als auch geschäftliche Bedürfnisse abdecken sollte. Die Herausforderung bestand darin, eine einfache und intuitive Benutzeroberfläche zu schaffen, die sowohl für Künstler als auch für Kunden einfach zu bedienen ist. Die Beweggründe für diese Idee war es, Künstlern das leben zu vereinfachen und sie auf unserer Plattform ihre Werke ohne die rechtlichen Hürden eines eigenen Shops zu verkaufen. Freiheit für KI generierte Kunstwerke wollten wir auch bieten.",
+      Title = Localizer["MagicalImageryTitle"],
+      Description = Localizer["MagicalImageryDescription"],
+      MoreInfoText = Localizer["MagicalImageryMoreInfoText"],
       Status = ProjectStatus.Completed,
       LinkToSourceCode = "https://github.com/cooleGruppe/Magical-Imagery",
       Slides = [
         new() {
           ImageUrl = "./imgs/projects/magicalImagery/img1.jpg",
           ThumbnailUrl = "./imgs/projects/magicalImagery/img1.jpg",
-          AltText = "Projektbild",
-          Description = "Index Page"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["MagicalImagerySlide1Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/magicalImagery/img2.jpg",
           ThumbnailUrl = "./imgs/projects/magicalImagery/img2.jpg",
-          AltText = "Projektbild",
-          Description = "Detaillierte Ansicht"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["MagicalImagerySlide2Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/magicalImagery/img3.jpg",
           ThumbnailUrl = "./imgs/projects/magicalImagery/img3.jpg",
-          AltText = "Projektbild",
-          Description = "Lizenzmodelle"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["MagicalImagerySlide3Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/magicalImagery/img4.jpg",
           ThumbnailUrl = "./imgs/projects/magicalImagery/img4.jpg",
-          AltText = "Projektbild",
-          Description = "Warenkorb"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["MagicalImagerySlide4Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/magicalImagery/img5.jpg",
           ThumbnailUrl = "./imgs/projects/magicalImagery/img5.jpg",
-          AltText = "Projektbild",
-          Description = "Produkt erstellen"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["MagicalImagerySlide5Description"]
         },
       ]
     },  
     new() {
-      Title = "Blazor Templates",
-      Description = "Die Blazor Templates sind eine kleine Anreihung an Vorlagen für Blazor Web Projekte. Sie sind für Entwickler gedacht, die schnell und einfach eine Vorlage für ihre Projekte suchen.",
-      MoreInfoText = "Alle Blazor Vorlagen bestehen aus derselben Struktur, welche die Datenbank-Logik und die Benutzeroberfläche trennt; geschrieben als Blazor Web-App. Im Moment gibt es 4 Vorlagen: Eine normale Blazor Web-App, die normale mit Radzen als UI-Libary und zwei weitere normale mit Blazorise als UI-Libary; eine mit TailwindCSS und die andere mit Bootstrap.",
+      Title = Localizer["BlazorTemplatesTitle"],
+      Description = Localizer["BlazorTemplatesDescription"],
+      MoreInfoText = Localizer["BlazorTemplatesMoreInfoText"],
       Status = ProjectStatus.InProgress,
       LinkToSourceCodes = [
         "https://github.com/Egomann88/BlazorWebTemplate",
@@ -192,89 +192,89 @@ public class DataProvider {
       Slides = null
     },
     new() {
-      Title = "Hackathon",
-      Description = "2022 habe ich mit vier Kollegen an dem Young Talents Hackathon, organisiert von der UMB AG und der ICT-Berufsbildung Zentralschweiz, teilgenommen. Wir sollten für die HSLU einen Ferienplanner für die Angestellten entwickeln.",
-      MoreInfoText = "Die effektive Umsetzung war eher mager; es war unser erster Versuch eine Web-App zu entwickeln. Schlussendlich haben wir eine einfache Web-App mit VueJs als Frontend und .Net als REST-Api entwickelt und präsentiert. Viel ist nicht daraus geworden, aber es war eine interessante Erfahrung.",
+      Title = Localizer["HackathonTitle"],
+      Description = Localizer["HackathonDescription"],
+      MoreInfoText = Localizer["HackathonMoreInfoText"],
       Status = ProjectStatus.Completed,
       LinkToSourceCode = "https://github.com/Egomann88/newHackathonDJMN",
       Slides = [
         new () {
           ImageUrl = "./imgs/projects/hackathon/img1.jpg",
           ThumbnailUrl = "./imgs/projects/hackathon/img1.jpg",
-          AltText = "Projektbild",
-          Description = "Login"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["HackathonSlide1Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/hackathon/img2.jpg",
           ThumbnailUrl = "./imgs/projects/hackathon/img2.jpg",
-          AltText = "Projektbild",
-          Description = "Kalender"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["HackathonSlide2Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/hackathon/img3.jpg",
           ThumbnailUrl = "./imgs/projects/hackathon/img3.jpg",
-          AltText = "Projektbild",
-          Description = "Beantragte Ferien"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["HackathonSlide3Description"]
         }
       ]
     },
     new() {
-      Title = "Scavenger-Hunt-Ionic-App",
-      Description = "Die Scavenger-Hunt ist wie man von dem Namen ableiten kann, eine Schnitzeljagd-App. Diese kleine App wurde von mir und zwei Kollegen im Rahmen eines ÜKs entwickelt.",
-      MoreInfoText = "Die App ist in Ionic und Angular geschriebenen. In der App kann man Schnitzeljagten mit insgesamt 6 Aufgaben machen, in dem Kartoffeln verteilt werden, wenn man zu viel Zeit bei einem Auftrag verbraucht. Alle Schnitzeljagten kann man in einer Rangliste einsehen. Die Daten werden im lokalen Speicher des Gerätes gespeichert, dazu wurden damals zur bearbeitung der ÜKs die Leistungen der Spieler in einer Google Tabelle gespeichert. Der Source-Code ist derzeit nicht öffentlich verfügbar.",
+      Title = Localizer["ScavengerHuntTitle"],
+      Description = Localizer["ScavengerHuntDescription"],
+      MoreInfoText = Localizer["ScavengerHuntMoreInfoText"],
       Status = ProjectStatus.Completed,
       LinkToSourceCode = null, // https://github.com/BBZW-Hoard/Scavenger-Hunt-Ionic-App
       Slides = [
         new() {
           ImageUrl = "./imgs/projects/scavengerHunt/img1.jpg",
           ThumbnailUrl = "./imgs/projects/scavengerHunt/img1.jpg",
-          AltText = "Projektbild",
-          Description = "Startseite und Rangliste"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["ScavengerHuntSlide1Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/scavengerHunt/img2.jpg",
           ThumbnailUrl = "./imgs/projects/scavengerHunt/img2.jpg",
-          AltText = "Projektbild",
-          Description = "1. Aufgabe: Sensor"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["ScavengerHuntSlide2Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/scavengerHunt/img3.jpg",
           ThumbnailUrl = "./imgs/projects/scavengerHunt/img3.jpg",
-          AltText = "Projektbild",
-          Description = "2. Aufgabe: Laufen"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["ScavengerHuntSlide3Description"]
         },
         new() {
           ImageUrl = "./imgs/projects/scavengerHunt/img4.jpg",
           ThumbnailUrl = "./imgs/projects/scavengerHunt/img4.jpg",
-          AltText = "Projektbild",
-          Description = "4. Aufgabe: Schütteln bzw. Drehen"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["ScavengerHuntSlide4Description"]
         },
         new () {
           ImageUrl = "./imgs/projects/scavengerHunt/img5.jpg",
           ThumbnailUrl = "./imgs/projects/scavengerHunt/img5.jpg",
-          AltText = "Projektbild",
-          Description = "Ende und Auswertung"
+          AltText = Localizer["SlideAltText"],
+          Description = Localizer["ScavengerHuntSlide5Description"]
         }
       ]
     },
     new() {
-      Title = "Powershell Word-Header replacer",
-      Description = "Das Powershell Word-Header replacer ist ein kleines Skript, welches ein Kollege und ich in unserem 1. Lehrjahr innerhalb von 3 Tagen entwickelt haben. Ziel des Skripts war es die Kopf und Fusszeilen von Word-Dokumenten mit dennen von einem anderen Dokument zu ersetzen.",
-      MoreInfoText = "Eine Lehrperson hatte uns gefragt, ob wir ein solches Skript entwickeln könnten, da sie es für ihre Arbeit benötigte und PowerShell war als Sprache vorgegeben. Das Skript benutzt die eingebaute Word API von Microsoft und kann die Kopf und Fusszeilen von Word-Dokumenten ersetzen, aber leider funktioniert es nicht immer. Ich habe viele Versuche unternommen, um das Skript zu verbessern, aber diese Versuche haben keine Früchte getragen.",
+      Title = Localizer["WordHeaderReplacerTitle"],
+      Description = Localizer["WordHeaderReplacerDescription"],
+      MoreInfoText = Localizer["WordHeaderReplacerMoreInfoText"],
       Status = ProjectStatus.Unknown,
       LinkToSourceCode = "https://github.com/Egomann88/PSCopyFromWord2Word",
       Slides = [
         new() {
           ImageUrl = "./imgs/projects/wordHeaderReplacer/img1.jpg",
           ThumbnailUrl = "./imgs/projects/wordHeaderReplacer/img1.jpg",
-          AltText = "Projektbild",
+          AltText = Localizer["SlideAltText"],
         },
       ]
     },
     new() {
-      Title = "Mongo Python",
-      Description = "Mongo Python heisst eigentlich Jukebox und ist ein Abschlussprojekt eines Moduls, entwicklet von mir und einem Kollegen. Es ist eine kleine Web-App, die Musik abspielen kann und die Musik in einer MongoDB speichert.",
-      MoreInfoText = "Ziel des Projekts war es, eine Web-App zu entwickeln, die Musik abspielen kann, diese in Playlist speichern kann und die Musik in einer MongoDB speichert. Die Web-App sollte auch eine Benutzeroberfläche haben, um die Musik zu verwalten. Umgesetzt wurde das Projekt mit VueJs als Frontend und Python als Backend. Die Datenbank wurde mit einer Dockerfile erstellt.",
+      Title = Localizer["MongoPythonTitle"],
+      Description = Localizer["MongoPythonDescription"],
+      MoreInfoText = Localizer["MongoPythonMoreInfoText"],
       Status = ProjectStatus.Completed,
       LinkToSourceCode = "https://github.com/dominictosku/Mongo-Python",
       Slides = null
