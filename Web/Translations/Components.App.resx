@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="HideText" xml:space="preserve">
+    <value>Verbergen</value>
+  </data>
   <data name="picFromUser" xml:space="preserve">
     <value>Bild von</value>
   </data>
   <data name="picOfSite" xml:space="preserve">
     <value>auf</value>
+  </data>
+  <data name="ShowText" xml:space="preserve">
+    <value>Zeigen</value>
   </data>
   <data name="Source" xml:space="preserve">
     <value>Quelle</value>

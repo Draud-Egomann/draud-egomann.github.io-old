@@ -1,5 +1,8 @@
-﻿@using Web.Models
+﻿@using Microsoft.Extensions.Localization
+@using Web.Models
+@using Web.Services
 @inject IJSRuntime JSRuntime
+@inject IStringLocalizer<App> Localizer
 
 <Card Class="@(Class)">
   <CardImage Source=@Card.ImageUrl Alt=@Card.AltText Class="rounded-t-md w-80 h-28 flex p-4 m-auto" />
@@ -29,7 +32,18 @@
   public MediaItem Card { get; set; } = default!;
 
   private bool TextVisible { get; set; } = false;
-  private string BtnText => TextVisible ? "Verbergen" : "Zeigen";
+  private string BtnText => TextVisible ? hideText : showText;
+  private string hideText;
+  private string showText;
+
+  protected override void OnInitialized() {
+    base.OnInitialized();
+
+    CultureService.SetCulture(CultureService.CurrentCulture);
+
+    hideText = Localizer["HideText"];
+    showText = Localizer["ShowText"];
+  }
 
   private async Task CopyText() {
     await JSRuntime.InvokeVoidAsync("navigator.clipboard.writeText", Card.Title);
