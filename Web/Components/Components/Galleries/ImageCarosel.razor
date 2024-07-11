@@ -3,25 +3,29 @@
 <div class="relative @(Class)">
   @if (Slides != null) {
     @* It's important to aknowledge that if you test the UI you have to test it with real mobile devices (or real simulators),
-       because the browser's responsive design mode is not accurate. *@
+  because the browser's responsive design mode is not accurate. *@
     <div>
       <img class="w-full object-cover" src="@Slides[currentSlideIndex].ImageUrl" />
     </div>
 
-    <button class="carousel-control left" @onclick="PreviousSlide">&#10094;</button>
-    <button class="carousel-control right" @onclick="NextSlide">&#10095;</button>
+    @if (HasMultipleSlides) {
+      <button class="carousel-control left" @onclick="PreviousSlide">&#10094;</button>
+      <button class="carousel-control right" @onclick="NextSlide">&#10095;</button>
+    }
 
     <div class="text-center own-bg-primary text-white p-1">
       <p class="text-white">@Slides[currentSlideIndex].Description</p>
     </div>
 
-    <div class="w-full">
-      @foreach (var slide in Slides.Select((value, index) => new { value, index })) {
-        <img class="thumbnail @GetThumbnailWidth(Slides.Count)" src="@slide.value.ThumbnailUrl"
-             @onclick="() => SetCurrentSlide(slide.index)"
-             style="@(currentSlideIndex == slide.index ? "opacity: 1;" : "opacity: .6;")" />
-      }
-    </div>
+    @if (HasMultipleSlides) {
+      <div class="w-full">
+        @foreach (var slide in Slides.Select((value, index) => new { value, index })) {
+          <img class="thumbnail @GetThumbnailWidth(Slides.Count)" src="@slide.value.ThumbnailUrl"
+               @onclick="() => SetCurrentSlide(slide.index)"
+               style="@(currentSlideIndex == slide.index ? "opacity: 1;" : "opacity: .6;")" />
+        }
+      </div>
+    }
   }
 </div>
 
@@ -32,6 +36,8 @@
   [Parameter]
   [EditorRequired]
   public List<MediaItem> Slides { get; set; } = default!;
+
+  private bool HasMultipleSlides => Slides.Count > 1;
 
   private int currentSlideIndex = 0;
 
@@ -94,5 +100,5 @@
     height: 100px;
     cursor: pointer;
     object-fit: cover;
-    }
+  }
 </style>
