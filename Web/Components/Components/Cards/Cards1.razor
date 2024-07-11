@@ -48,6 +48,17 @@
                   Source Code ansehen
                   <Icon Name="IconName.ExternalLinkSquareAlt" Class="ml-2" />
                 </Button>
+              } else if (CurrentItem?.LinkToSourceCodes?.Count > 0) {
+                <div class="flex flex-wrap justify-center items-center">
+                  
+                  @foreach (var item in CurrentItem.LinkToSourceCodes.Select((link, index) => new { link, index })) {
+                    <Button Class="w-1/3 m-4" Color="Color.Info" Type="ButtonType.Link" To="@item.link" Target="Target.Blank" rel="nofollow" Outline>
+                      @(item.index + 1 + ".") Source Code ansehen
+                      <Icon Name="IconName.ExternalLinkSquareAlt" Class="ml-2" />
+                    </Button>
+                  }
+
+                </div>
               }
             </div>
           </div>

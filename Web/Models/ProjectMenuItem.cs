@@ -10,6 +10,7 @@ public class ProjectMenuItem {
   public ProjectStatus? Status { get; set; } // under more info
   public string? LinkToLiveSite { get; set; } // under more info
   public string? LinkToSourceCode { get; set; } // under more info
+  public List<string>? LinkToSourceCodes { get; set; } // under more info ; if multiple source codes
   public List<string> Classes { get; set; } = [];
   public List<MediaItem>? Slides { get; set; }
 }
