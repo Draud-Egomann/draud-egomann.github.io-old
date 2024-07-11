@@ -80,8 +80,6 @@
       throw new ArgumentOutOfRangeException(nameof(Index));
     }
 
-    Item.HasMoreInfo = !string.IsNullOrEmpty(Item.MoreInfoText);
-
     Item.Classes = new() {
       CardBg(Index),
       BtnColor(Index),
