@@ -5,7 +5,7 @@ services:
     image: ${DOCKER_REGISTRY-}github_io_page
     build:
       context: .
-      dockerfile: github_io_page/Dockerfile
+      dockerfile: Web/Dockerfile
     container_name: github_io_page_app
 
   db:
