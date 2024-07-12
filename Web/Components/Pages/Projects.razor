@@ -1,4 +1,5 @@
-﻿@page "/projects"
+﻿@page "/projects/"
+@page "/projects/{searchString}"
 @using Microsoft.Extensions.Localization
 @using Web.Components.Components
 @using Web.Components.Components.Cards
@@ -6,6 +7,7 @@
 @using System.Globalization
 @using Web.Services
 @inject IStringLocalizer<Projects> Localizer
+@inject IJSRuntime JSRuntime
 
 <PageTitle>Justin Urbanek - @pageTitle</PageTitle>
 
@@ -14,12 +16,25 @@
             HasButton="false"
             IsBigView="false" />
 
-<Cards1 Items=@ProjectMenuItems />
+<Cards1 Items=@ProjectMenuItems SearchItem=@SearchItem />
+
+<script>
+  function scrollToElement(elementId) {
+    var element = document.getElementById(elementId);
+    
+    element.scrollIntoView();
+    window.scrollBy(0, -70);  // because the header is fixed
+  }
+</script>
 
 @code {
+  [Parameter]
+  public string? searchString { get; set; }
+
   private string pageTitle;
   private string pageSubTitle;
   private List<ProjectMenuItem> ProjectMenuItems { get; set; } = default!;
+  private ProjectMenuItem? SearchItem { get; set; }
 
   protected override void OnInitialized() {
     base.OnInitialized();
@@ -30,5 +45,27 @@
     pageSubTitle = Localizer["PageSubTitle"];
 
     ProjectMenuItems = DataProvider.GetProjectMenuItems(Localizer);
+  }
+
+  protected override void OnAfterRender(bool firstRender) {
+    base.OnAfterRender(firstRender);
+
+    if (firstRender) {
+      Scroll2SearchString();
+    }
+  }
+
+  private void Scroll2SearchString() {
+    if (!string.IsNullOrEmpty(searchString)) {
+      // get the project with the most resembling name to the search string
+      var project = ProjectMenuItems.FirstOrDefault(p => p.Title.ToLower().Contains(searchString.ToLower()));
+
+      // scroll to the project
+      if (project != null) {
+        JSRuntime.InvokeVoidAsync("scrollToElement", project.Title);
+        SearchItem = project;
+        StateHasChanged();
+      }
+    }
   }
 }
