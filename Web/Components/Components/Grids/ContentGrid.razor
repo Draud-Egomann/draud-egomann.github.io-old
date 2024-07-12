@@ -16,15 +16,21 @@
       @foreach (var item in MediaItems) {
         <div class="@($"w-full sm:w-1/2 p-8 flex justify-center items-center {(MediaItems.IndexOf(item) % 2 == 0 ? "lg:justify-end" : "lg:justify-start")}")">
           <div class="relative bg-gray-600 rounded-lg w-full max-w-[368px] h-[256px] overflow-hidden">
-            <button class="relative w-full h-full rounded-lg overflow-hidden p-8">
-              @* Separate text and image to separate hover effects *@
-              <div class="absolute inset-0 bgImg bg-[url('@item.ImageUrl')] transform-gpu duration-300 hover:scale-125"></div>
 
-              <div class="absolute bottom-8 left-8 flex items-center gap-4">
-                <Icon Name="IconName.ArrowRight" IconSize="IconSize.Large" />
-                <p class="text-xl">@item.Title</p>
-              </div>
-            </button>
+            <Button Type="ButtonType.Link" To=@item.LinkUrl Class="relative w-full h-full rounded-lg overflow-hidden p-8">
+              @* Separate text and image to separate hover effects *@
+              <div class="absolute inset-0 bgImg bg-[url('@item.ImageUrl')] transform-gpu duration-300 hover:scale-125 @(item.ImageClass)"></div>
+
+              @if (!string.IsNullOrEmpty(item.Title)) {
+                <div class="absolute bottom-8 left-8 flex items-center gap-4">
+                  <Icon Name="IconName.ArrowRight" IconSize="IconSize.Large" TextColor="TextColor.White" />
+                  <p class="text-xl text-white">
+                    @item.Title
+                  </p>
+                </div>
+              }
+            </Button>
+
           </div>
         </div>
       }

@@ -16,10 +16,28 @@ public class DataProvider {
   ];
 
   public static List<MediaItem> GetExperienceContent() => [
-    new() { ImageUrl = "https://placehold.co/386x256", AltText = "Placeholder", Title = "Experience 1", LinkUrl = "https://www.example.com/" },
-    new() { ImageUrl = "https://placehold.co/386x256", AltText = "Placeholder", Title = "Experience 2", LinkUrl = "https://www.example.com/" },
-    new() { ImageUrl = "https://placehold.co/386x256", AltText = "Placeholder", Title = "Experience 3", LinkUrl = "https://www.example.com/" },
-    new() { ImageUrl = "https://placehold.co/386x256", AltText = "Placeholder", Title = "Experience 4", LinkUrl = "https://www.example.com/" }
+    new() {
+      ImageUrl = "https://www.kauz.ch/assets/imgs/logo/kim-inv.svg",
+      ImageClass = "bg-[#1b2533] bg-contain bg-fixed bg-no-repeat",
+      AltText = "Kauz Website",
+      LinkUrl = "/projects/kauz"
+    },
+    new() {
+      ImageUrl = "./imgs/logos/magical-imagery.svg",
+      AltText = "Magical Imagery",
+      LinkUrl = "/projects/magical"
+    },
+    new() {
+      ImageUrl = "https://young-talents-hackathon.ch/wp-content/uploads/2022/09/Hackathon_Logo_rgb.png",
+      ImageClass = "bg-[#1b2533] bg-contain bg-fixed bg-no-repeat",
+      AltText = "Young Talents Hackathon 2022",
+      LinkUrl = "/projects/hackathon"
+    },
+    new() {
+      ImageUrl = "./imgs/logos/scavenger-hunt.svg",
+      AltText = "Scavenger-Hunt-Ionic-App",
+      LinkUrl = "/projects/scavenger"
+    }
   ];
 
   public List<FlipCardItem> GetFlipCards(IStringLocalizer<About> Localizer) => [
