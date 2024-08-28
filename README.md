@@ -37,5 +37,6 @@ Add-Migration [Name]
 
 ## License
 
-This project is not licensed, it is a personal project and i do not plan to distribute it.
+This project is licensed under the [GPL-3.0 License](LICENSE).
+
 
